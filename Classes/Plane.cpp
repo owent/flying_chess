@@ -56,33 +56,27 @@ namespace fc {
         int reason = LGR_MOVE_START;
 
         using std::abs;
-        // 触发Pass首个节点时会消耗一个point
-        point = point + point / abs(point);
-
         while (point) {
             grid->OnLeave(*this, reason);
             reason = LGR_PASS;
 
             auto next = grid->OnPass(*this, point);
-            at_grid = grid->ID();
-            if (next)
-                grid = next;
-            else
+            if (!next)
                 break;
+
+            grid = next;
         }
 
         return MoveTo(grid->ID());
     }
 
     bool Plane::MoveTo(int grid_id) {
-        GridPool::grid_ptr grid = GridPool::Find(at_grid);
+        GridPool::grid_ptr grid = GridPool::Find(grid_id);
         if (!grid)
             return false;
 
-        at_grid = grid_id;
-        is_start = !(at_grid == home_grid);
+        is_start = !(grid_id == home_grid);
         grid->OnArrive(*this);
-
         return true;
     }
 
@@ -158,15 +152,16 @@ namespace fc {
         next_action();
     }
 
-    void Plane::AddAnimationAction(float x, float y, float duration, float delay) {
+    void Plane::AddAnimationAction(Grid& g, float duration, float delay) {
         UIAction act;
         act.type = UIAT_MOVE;
         act.delay = delay;
         act.duration = duration;
-        act.param[0] = x;
-        act.param[1] = y;
+        act.param[0] = g.GetPositionX();
+        act.param[1] = g.GetPositionY();
         m_stUIActions.push_back(act);
 
+        at_grid = g.ID();
         next_action();
     }
 
@@ -216,7 +211,8 @@ namespace fc {
         switch (act.type)
         {
         case UIAT_MOVE:
-            ui_action = MoveTo::create(act.duration, Vec2(act.param[0], act.param[1]));
+            if (act.duration > std::numeric_limits<float>::epsilon())
+                ui_action = MoveTo::create(act.duration, Vec2(act.param[0], act.param[1]));
             break;
 
         case UIAT_DISABLE:
@@ -247,9 +243,11 @@ namespace fc {
             seq = Sequence::create(DelayTime::create(m_stUIActions.front().delay), ui_action, CallFunc::create(callback), NULL);
         else if (ui_action)
             seq = Sequence::create(ui_action, CallFunc::create(callback), NULL);
-        else
-            seq = Sequence::create(CallFunc::create(callback), NULL);
 
-        m_pUILayout->runAction(seq);
+        // 没有动作序列就立即回调
+        if (seq)
+            m_pUILayout->runAction(seq);
+        else
+            callback();
     }
 }

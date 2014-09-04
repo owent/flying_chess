@@ -8,6 +8,7 @@
 
 namespace fc {
     class Player;
+    class Grid;
     class Plane {
     public:
         void Init(int home_grid_, EnPlayerColor color_, Player* player_);
@@ -54,10 +55,11 @@ namespace fc {
         void SetUI(cocos2d::ui::Layout*);
 
         void ActiveAction();
-        void AddAnimationAction(float x, float y, float duration, float delay);
+        void AddAnimationAction(Grid& g, float duration, float delay);
         void AddDisableAction(float duration, float delay);
         void AddEnableAction(float duration, float delay);
 
+        inline float GetSpeed() const { return speed; }
     private:
         int left_fly;
         int left_jump;

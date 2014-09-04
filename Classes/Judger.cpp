@@ -21,6 +21,10 @@ namespace fc {
         cache_action.status = JS_NONE;
         cache_action.player = EPC_PINK;
 
+        // reset grids
+        for (auto grid : GridPool::m){
+            grid.second->Reset();
+        }
 
         // reset all player
         PlayerSelecter ps[EPC_MAX] = {fc::PS_DISABLE};
@@ -42,11 +46,14 @@ namespace fc {
             return false;
         }
 
+        bool ret = RollPoints::GetInstance().RollPoint();
+        if (!ret)
+            return ret;
+
         cache_action = events.front();
         events.front().status = JS_NONE; // 已响应
 
-        RollPoints::GetInstance().RollPoint();
-        return true;
+        return ret;
     }
 
     bool Judger::OnRollPointEnd(int point) {
@@ -64,8 +71,10 @@ namespace fc {
         }
 
         auto iter = events.begin();
-        ++iter;
-        events.insert(iter, action_event(JS_SELECT_PLANE, cache_action.player));
+        if (6 == point || Player::Pool[iter->player].PlaneRunningNumber()){
+            ++iter;
+            events.insert(iter, action_event(JS_SELECT_PLANE, cache_action.player));
+        }
 
         DoNext();
         return true;
@@ -100,8 +109,13 @@ namespace fc {
 
     void Judger::DoNext() {
         // 本次action执行完毕，出列
-        if (!events.empty() && JS_NONE == events.front().status)
+        if (!events.empty() && 
+            JS_NONE == events.front().status &&
+            !RollPoints::GetInstance().IsRunning()
+            ) {
             events.pop_front();
+            cocos2d::log("action done, pop.");
+        }
 
         // 进入下一个action
         next_action();

@@ -28,6 +28,7 @@ namespace fc {
 
     void RollPoints::Reset() {
         m_pRollUI = NULL;
+        m_bIsRunning = false;
     }
 
     void RollPoints::SetUI(cocos2d::ui::Layout* l) {
@@ -56,30 +57,38 @@ namespace fc {
         cocos2d::log("roll points update to player %d (%f, %f)", cur_player, x, y);
     }
 
-    void RollPoints::RollPoint() {
+    bool RollPoints::RollPoint() {
         using namespace cocos2d;
+
+        if (m_bIsRunning)
+            return false;
 
         int point = rand() % 6 + 1;
 
         if (NULL == m_pRollUI) {
             Judger::GetInstance().OnRollPointEnd(point);
-            return;
+            return true;
         }
 
+        m_bIsRunning = true;
 
         auto arm = dynamic_cast<cocostudio::Armature*>(m_pRollUI->getChildByTag(NTAG_ARMATURE));
         arm->getAnimation()->playWithIndex(0); // ¹ö¶¯÷»×Ó
 
-        auto seq = Sequence::create(DelayTime::create(Config::GetInstance().RollCfg.Duration), CallFunc::create([arm, point](){
+        bool& bIsRunning = m_bIsRunning;
+        auto seq = Sequence::create(DelayTime::create(Config::GetInstance().RollCfg.Duration), CallFunc::create([&bIsRunning, arm, point](){
             cocos2d::log("[UI] end roll points %fs and res: %d", Config::GetInstance().RollCfg.Duration, point);
 
             arm->getAnimation()->playWithIndex(point);
             arm->getAnimation()->pause();
+            bIsRunning = false;
             Judger::GetInstance().OnRollPointEnd(point);
         }), NULL);
         
         cocos2d::log("[UI] begin roll points %fs and res: %d", Config::GetInstance().RollCfg.Duration, point);
         arm->runAction(seq);
+
+        return true;
     }
 
     cocos2d::ui::Layout* RollPoints::CreateUI() {

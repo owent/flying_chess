@@ -7,13 +7,15 @@
     "actionlist": []
   },
   "dataScale": 1,
-  "designHeight": 35,
-  "designWidth": 35,
+  "designHeight": 75,
+  "designWidth": 75,
   "textures": [
     "game_panel0.plist",
     "game_panel1.plist"
   ],
   "texturesPng": [
+    "game_panel0.png",
+    "game_panel1.png",
     "game_panel0.png",
     "game_panel1.png",
     "game_panel0.png",
@@ -49,7 +51,7 @@
             "classname": null,
             "name": null,
             "align": 5,
-            "gravity": 2,
+            "gravity": 0,
             "layoutEageType": 0,
             "layoutNormalHorizontal": 0,
             "layoutNormalVertical": 0,
@@ -101,7 +103,7 @@
       "classname": "Panel",
       "name": "Panel_Plane_Color_0",
       "ZOrder": 0,
-      "actiontag": 40938807,
+      "actiontag": -1,
       "anchorPointX": 0,
       "anchorPointY": 0,
       "classType": "CocoStudio.EngineAdapterWrap.CSPanel",

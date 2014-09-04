@@ -16,14 +16,32 @@
     <string>roll_points_panel.json</string>
   </JsonList>
   <CanvasSize>
-    <Width>35</Width>
-    <Height>35</Height>
+    <Width>75</Width>
+    <Height>75</Height>
   </CanvasSize>
   <filePath>D:\Libs\cocos2d\demo\flying_chess\CocosStudio\ccsprojs\game_panel\game_panel.xml.ui</filePath>
   <ProjectType>UIProject</ProjectType>
   <ResRelativePath>\\..\\..\\assets</ResRelativePath>
-  <imageFileList />
-  <imagePngList />
+  <imageFileList>
+    <string>game_panel0.plist</string>
+    <string>game_panel1.plist</string>
+  </imageFileList>
+  <imagePngList>
+    <string>game_panel0.png</string>
+    <string>game_panel1.png</string>
+    <string>game_panel0.png</string>
+    <string>game_panel1.png</string>
+    <string>game_panel0.png</string>
+    <string>game_panel1.png</string>
+    <string>game_panel0.png</string>
+    <string>game_panel1.png</string>
+    <string>game_panel0.png</string>
+    <string>game_panel1.png</string>
+    <string>game_panel0.png</string>
+    <string>game_panel1.png</string>
+    <string>game_panel0.png</string>
+    <string>game_panel1.png</string>
+  </imagePngList>
   <JsonSuffix>.json</JsonSuffix>
-  <CurrentUIJson>roll_points_panel.json</CurrentUIJson>
+  <CurrentUIJson>plane_color_0.json</CurrentUIJson>
 </UIProject>

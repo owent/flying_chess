@@ -7,8 +7,8 @@
     "actionlist": []
   },
   "dataScale": 1,
-  "designHeight": 35,
-  "designWidth": 35,
+  "designHeight": 75,
+  "designWidth": 75,
   "textures": [
     "game_panel0.plist",
     "game_panel1.plist"
@@ -47,7 +47,7 @@
             "classname": null,
             "name": null,
             "align": 5,
-            "gravity": 2,
+            "gravity": 0,
             "layoutEageType": 0,
             "layoutNormalHorizontal": 0,
             "layoutNormalVertical": 0,
@@ -68,8 +68,8 @@
           "rotation": 0,
           "scaleX": 1,
           "scaleY": 1,
-          "sizePercentX": 0.13333334,
-          "sizePercentY": 0.13333334,
+          "sizePercentX": 1,
+          "sizePercentY": 1,
           "sizeType": 0,
           "tag": 5,
           "touchAble": false,

@@ -23,6 +23,7 @@ namespace fc {
         y = y_;
         id = id_;
         color = color_;
+        place_plane = NULL;
     }
 
     void Grid::Init(int pre_, int next_, int jump_) {
@@ -104,24 +105,24 @@ namespace fc {
             move_to = GetPreviousGrid();
         }
 
+        // 添加飞机运动动画
+        MoveHere(plane, plane.GetSpeed(), 0.0f);
+
         if (!move_to)
             return GridPool::Find(ID());
-
-
-        // 添加飞机运动动画
-        MoveHere(plane, Config::GetInstance().Plane.MoveSpeed, 0.0f);
 
         return move_to;
     }
 
     void Grid::OnArrive(Plane& plane) {
+        Plane* old_place_plane = place_plane;
         // 添加飞机运动动画
-        MoveHere(plane, Config::GetInstance().Plane.MoveSpeed, 0.0f);
+        MoveHere(plane, plane.GetSpeed(), 0.0f);
 
         // 击毁已有的Plane
-        if (NULL != place_plane) {
+        if (NULL != old_place_plane) {
             // 被击毁飞机回家
-            plane.GoHome(LGR_KICKOFF);
+            old_place_plane->GoHome(LGR_KICKOFF);
         }
         place_plane = &plane;
 
@@ -161,7 +162,7 @@ namespace fc {
 
     void Grid::MoveHere(Plane& plane, float speed, float delay_time) {
         if (ID() == plane.GetLocateGridID()) {
-            plane.ActiveAction(); // 流程必须通
+            plane.AddAnimationAction(*this, 0.0f, delay_time);
             return;
         }
 
@@ -173,7 +174,7 @@ namespace fc {
         from.set(locate->GetPositionX(), locate->GetPositionY());
         to.set(GetPositionX(), GetPositionY());
 
-        plane.AddAnimationAction(GetPositionX(), GetPositionY(), to.distance(from) / speed, delay_time);
+        plane.AddAnimationAction(*this, to.distance(from) / speed, delay_time);
     }
 
     void Grid::arrive_event(Plane& plane) {

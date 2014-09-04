@@ -44,7 +44,7 @@ namespace fc {
     }
 
     void SoundMgr::PlayJump() {
-        SimpleAudioEngine::getInstance()->playEffect(MAKE_EFFECT_FILE("Sound/Jump.mp3"));
+        SimpleAudioEngine::getInstance()->playEffect(MAKE_EFFECT_FILE("Sound/Jump"));
     }
 
     void SoundMgr::PlayMove() {

@@ -20,12 +20,14 @@ namespace fc {
 
         void OnUpdate();
 
-        void RollPoint();
+        bool RollPoint();
 
         cocos2d::ui::Layout* CreateUI();
 
+        inline bool IsRunning() const { return m_bIsRunning; }
     private:
         cocos2d::ui::Layout* m_pRollUI;
+        bool m_bIsRunning;
     };
 
 }
