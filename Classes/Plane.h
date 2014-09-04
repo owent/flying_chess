@@ -59,7 +59,6 @@ namespace fc {
         void AddDisableAction(float duration, float delay);
         void AddEnableAction(float duration, float delay);
 
-        inline float GetSpeed() const { return speed; }
     private:
         int left_fly;
         int left_jump;
