@@ -1,3 +1,4 @@
+#include <cmath>
 
 #include "Config.h"
 #include "Grid.h"
@@ -41,6 +42,30 @@ namespace fc {
 
     void Grid::Reset() {
         place_plane = NULL;
+    }
+
+    int Grid::GetScore(EnPlayerColor color, int point, int left_jump, int left_fly) {
+        if (0 != point) {
+            auto next = GetNextGrid();
+            return next->GetScore(color, point - point / abs(point), left_jump, left_fly) + Config::GetInstance().AICfg.Move;
+        }
+
+        int ret = 0;
+        if (NULL != place_plane){
+            if (place_plane->Color() == color)
+                ret += Config::GetInstance().AICfg.KillFriend;
+            else
+                ret += Config::GetInstance().AICfg.KillEnermy;
+        }
+
+        if (color == Color() && left_jump > 0) {
+            ret += Config::GetInstance().AICfg.Jump;
+            auto jump = GetJumpGrid();
+            if (jump)
+                ret += jump->GetScore(color, point, left_jump - 1, left_fly);
+        }
+
+        return ret;
     }
 
     void Grid::OnLeave(Plane& plane, int reason) {

@@ -28,6 +28,10 @@ namespace fc {
 
         inline bool CanJump() const { return left_jump > 0; }
 
+        inline int GetLeftFly() const { return left_fly; }
+
+        inline int GetLeftJump() const { return left_jump; }
+
         inline EnPlayerColor Color() const { return color; }
 
         inline bool IsAvailable() const { return is_start || !is_win; }

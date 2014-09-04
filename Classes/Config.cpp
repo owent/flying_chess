@@ -30,6 +30,9 @@ namespace fc {
 
         func_node = root->FirstChildElement("Rolls");
         init_rolls(func_node);
+
+        func_node = root->FirstChildElement("Rolls");
+        init_ai(func_node);
     }
 
 
@@ -192,5 +195,26 @@ namespace fc {
             RollCfg.Rolls[color].x = roll->IntAttribute("X");
             RollCfg.Rolls[color].y = roll->IntAttribute("Y");
         }
+    }
+
+    void Config::init_ai(tinyxml2::XMLElement* xml_node) {
+        AICfg.Move = 1;
+        AICfg.Jump = 4;
+        AICfg.Fly = 12;
+        AICfg.KillEnermy = 20;
+        AICfg.KillFriend = -20;
+        AICfg.Win = 50;
+        AICfg.Start = 50;
+
+        if (NULL == xml_node)
+            return;
+
+        AICfg.Move = xml_node->IntAttribute("Move");
+        AICfg.Jump = xml_node->IntAttribute("Jump");
+        AICfg.Fly = xml_node->IntAttribute("Fly");
+        AICfg.KillEnermy = xml_node->IntAttribute("KillEnermy");
+        AICfg.KillFriend = xml_node->IntAttribute("KillFriend");
+        AICfg.Win = xml_node->IntAttribute("Win");
+        AICfg.Start = xml_node->IntAttribute("Start");
     }
 }

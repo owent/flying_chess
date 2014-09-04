@@ -16,6 +16,7 @@ namespace fc {
 
     public:
         Grid(int x_, int y_, int id_, EnPlayerColor color_);
+        ~Grid(){}
 
         void Init(int pre_, int next_, int jump_);
 
@@ -27,6 +28,8 @@ namespace fc {
 
         void Reset();
 
+
+        virtual int GetScore(EnPlayerColor color, int point, int left_jump, int left_fly);
 
         /**
         * @brief GridµÄLeaveÊÂ¼þ

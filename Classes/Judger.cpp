@@ -1,7 +1,9 @@
+#include <cstdlib>
 
 #include "Config.h"
 #include "Plane.h"
 #include "Player.h"
+#include "Grid.h"
 #include "RollPoints.h"
 #include "Judger.h"
 
@@ -141,7 +143,26 @@ namespace fc {
             OnRollPointBegin();
 
         } else if (JS_SELECT_PLANE == evt.status) {
-            // TODO 选择一个飞机
+            // 选择一个飞机
+            int plane_score[EP_MAX] = {0}, sel_index = 0;
+            for (int i = 0; i < EP_MAX; ++i) {
+                Plane& plane = Player::Pool[evt.player][i];
+                if (!plane.IsAvailable() || plane.IsWin())
+                    continue;
+
+                int rdn = rand() & 0xFF;
+                // 启动得分
+                if (!plane.IsStarted() && 6 == cache_points)
+                    plane_score[i] = (Config::GetInstance().AICfg.Start << 8) + rdn;
+                // 走格子得分
+                auto grid = GridPool::Find(plane.GetLocateGridID());
+                plane_score[i] = grid->GetScore(plane.Color(), cache_points, plane.GetLeftJump(), plane.GetLeftFly());
+
+                if (plane_score[i] > plane_score[sel_index])
+                    sel_index = i;
+            }
+
+            OnSelectPlane(Player::Pool[evt.player][sel_index]);
         }
     }
 

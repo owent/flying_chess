@@ -17,6 +17,8 @@ namespace fc {
     public:
         StraightGrid(int x_, int y_, int id_, EnPlayerColor color_);
 
+        virtual int GetScore(EnPlayerColor color, int point, int left_jump, int left_fly);
+
         /**
         * @brief GridµÄPassÊÂ¼þ
         */

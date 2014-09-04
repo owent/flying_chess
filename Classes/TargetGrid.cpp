@@ -12,6 +12,13 @@ namespace fc {
         Grid(x_, y_, id_, color_) {
     }
 
+    int TargetGrid::GetScore(EnPlayerColor color, int point, int left_jump, int left_fly) {
+        if (0 == point)
+            return Config::GetInstance().AICfg.Win;
+
+        return -Grid::GetScore(color, point, left_jump, left_fly);
+    }
+
     TargetGrid::grid_ptr TargetGrid::OnPass(Plane& plane, int& left_point) {
         plane.DisableFly();
         plane.DisableJump();

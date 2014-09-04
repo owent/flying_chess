@@ -36,6 +36,16 @@ namespace fc {
         RollsType Rolls;
     };
 
+    struct AIConf {
+        int Move;
+        int Jump;
+        int Fly;
+        int KillEnermy;
+        int KillFriend;
+        int Win;
+        int Start;
+    };
+
     class Config :public Singleton<Config> {
     public:
         Config();
@@ -45,12 +55,14 @@ namespace fc {
         PlaneConf Plane;
         GridConf GridCfg;
         RollConf RollCfg;
+        AIConf AICfg;
 
     private:
         void init_grids(tinyxml2::XMLElement* xml_node);
         void init_players(tinyxml2::XMLElement* xml_node);
         void init_plane(tinyxml2::XMLElement* xml_node);
         void init_rolls(tinyxml2::XMLElement* xml_node);
+        void init_ai(tinyxml2::XMLElement* xml_node);
     };
 
 }
