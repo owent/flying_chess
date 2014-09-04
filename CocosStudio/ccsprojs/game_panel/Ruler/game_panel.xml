@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfGuidesProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <GuidesProject>
+    <Project>game_panel_bk</Project>
+    <GuidesList />
+  </GuidesProject>
+  <GuidesProject>
+    <Project>plane_color_0</Project>
+    <GuidesList />
+  </GuidesProject>
+  <GuidesProject>
+    <Project>plane_color_1</Project>
+    <GuidesList />
+  </GuidesProject>
+  <GuidesProject>
+    <Project>plane_color_2</Project>
+    <GuidesList />
+  </GuidesProject>
+  <GuidesProject>
+    <Project>plane_color_3</Project>
+    <GuidesList />
+  </GuidesProject>
+  <GuidesProject>
+    <Project>hello_panel</Project>
+    <GuidesList />
+  </GuidesProject>
+  <GuidesProject>
+    <Project>roll_points_panel</Project>
+    <GuidesList />
+  </GuidesProject>
+</ArrayOfGuidesProject>

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" standalone="yes" ?>
+<Root>
+  <Item Type="NodeTag" Name="Node Tag" CHName="渲染节点标签" Key = "Tag" Default="10000"/>
+  <Item Type="IntegerUpDown" Name="Rect.origin.x" CHName="矩形中心X坐标" Key = "originX" Default="180"/>
+  <Item Type="IntegerUpDown" Name="Rect.origin.y" CHName="矩形中心Y坐标" Key = "originY" Default="70"/>
+  <Item Type="IntegerUpDown" Name="Rect.size.Width" CHName="矩形宽度" Key = "sizeWidth" Default="180"/>
+  <Item Type="IntegerUpDown" Name="Rect.size.Height" CHName="矩形高度" Key = "sizeHeight" Default="70" />
+</Root>

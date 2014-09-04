@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" standalone="yes" ?>
+<Root>
+  <Item Type="NodeTag" Name="NodeTag" CHName="渲染节点标签" Key = "Tag" Default="10000" />
+  <Item Type="IntegerUpDown" Name="EndX" CHName="移动到的终点X坐标" Key = "EndX" Default="-625"/>
+  <Item Type="DoubleUpDown" Name="EndDuration" CHName="移动到终点的持续时间" Key = "EndDuration" Default="6"/>
+  <Item Type="IntegerUpDown" Name="StartX"  CHName="起点的X坐标"  Key = "StartX" Default="0"/>
+  <Item Type="DoubleUpDown" Name="StartDuration" CHName = "移动到起点的持续时间" Key = "StartDuration" Default="0"/>
+  <Item Type="DoubleUpDown" Name="DelayTime" CHName="移动到终点的延迟时间" Key = "DelayTime" Default="-1"/>
+  <Item Type="IntegerUpDown" Name="MinPositonY" CHName="Y坐标随机下限" Key = "MinPositonY" Default="-100"/>
+  <Item Type="IntegerUpDown" Name="MaxPositonY" CHName="Y坐标随机上限" Key = "MaxPositonY" Default="150"/>
+</Root>

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<UIProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ProjectDir>D:\Libs\cocos2d\demo\flying_chess\CocosStudio\ccsprojs\game_panel</ProjectDir>
+  <Version>1.6.0.0</Version>
+  <Resources>D:\Libs\cocos2d\demo\flying_chess\CocosStudio\assets</Resources>
+  <Name>game_panel</Name>
+  <JsonFileName>game_panel.json</JsonFileName>
+  <JsonFolder>D:\Libs\cocos2d\demo\flying_chess\CocosStudio\ccsprojs\game_panel\Json</JsonFolder>
+  <JsonList>
+    <string>game_panel_bk.json</string>
+    <string>hello_panel.json</string>
+    <string>plane_color_0.json</string>
+    <string>plane_color_1.json</string>
+    <string>plane_color_2.json</string>
+    <string>plane_color_3.json</string>
+    <string>roll_points_panel.json</string>
+  </JsonList>
+  <CanvasSize>
+    <Width>35</Width>
+    <Height>35</Height>
+  </CanvasSize>
+  <filePath>D:\Libs\cocos2d\demo\flying_chess\CocosStudio\ccsprojs\game_panel\game_panel.xml.ui</filePath>
+  <ProjectType>UIProject</ProjectType>
+  <ResRelativePath>\\..\\..\\assets</ResRelativePath>
+  <imageFileList />
+  <imagePngList />
+  <JsonSuffix>.json</JsonSuffix>
+  <CurrentUIJson>roll_points_panel.json</CurrentUIJson>
+</UIProject>

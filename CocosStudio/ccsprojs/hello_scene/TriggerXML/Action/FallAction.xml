@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" standalone="yes" ?>
+<Root>
+  <Item Type="NodeTag" Name="NodeTag" CHName="渲染节点标签" Key = "Tag" Default="10000" />
+  <Item Type="DoubleUpDown" Name="FallSpeed" CHName="下落速度" Key = "FallSpeed" Default="1000"/>
+  <Item Type="DoubleUpDown" Name="RotationTo" CHName="旋转到" Key = "RotationTo" Default="90"/>
+  <Item Type="DoubleUpDown" Name="FallTo" CHName="下落到" Key = "FallTo" Default="142"/>
+</Root>

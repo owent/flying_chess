@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" standalone="yes" ?>
+<Root>
+  <Item Type="NodeTag" Name="NodeTag" CHName = "渲染节点标签" Key = "Tag" Default="10000" />
+  <Item Type="DoubleUpDown" Name="SkewX" CHName = "x轴歪曲" Key = "SkewX" Default="1.0"/>
+  <Item Type="DoubleUpDown" Name="SkewY" CHName = "y轴歪曲" Key = "SkewY" Default="1.0"/>
+  <Item Type="DoubleUpDown" Name="Duration" CHName = "持续时间" Key = "Duration" Default="1.0"/>
+</Root>

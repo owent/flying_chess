@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" standalone="yes" ?>
+<Root>
+  <Item Type="MultiNode" Name="NodeTags" CHName="渲染节点们的标签" Key = "Tags" Default="" />
+</Root>

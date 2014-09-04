@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Root Type="Scene">
+  <EventList>
+    <Event ClassName="EnterScene" Name="SceneOnEnter" CHName="场景进入（SceneOnEnter）"/>
+    <Event ClassName="LeaveScene" Name="SceneOnExit" CHName="场景退出（SceneOnExit）"/>
+    <Event ClassName="InitScene"  Name="SceneInit" CHName="场景初始化（SceneOnInit）"/>
+	<Event ClassName="UpdateScene"  Name="SceneUpdate" CHName="场景更新（SceneUpdate）"/>
+	<Event ClassName="TouchBegan"  Name="TouchBegan" CHName="触摸点击（TouchBegan）"/>
+	<Event ClassName="TouchMoved"  Name="TouchMoved" CHName="触摸移动（TouchMoved）"/>
+	<Event ClassName="TouchEnded"  Name="TouchEnded" CHName="触摸结束（TouchEnded）"/>
+	<Event ClassName="TouchCancelled"  Name="TouchCancelled" CHName="触摸取消（TouchCancelled）"/>
+  </EventList>
+</Root>
+

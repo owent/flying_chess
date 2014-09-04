@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" standalone="yes" ?>
+<Root>
+  <Item Type="NodeTag" Name="NodeTag" CHName="渲染节点标签" Key = "Tag" Default="10000" />
+  <Item Type="TextBox" Name="Key" CHName="自定义属性组件关键" Key = "Key" Default="UpSpeed"/>
+  <Item Type="DoubleUpDown" Name="Value" CHName="自定义属性组件关键对应的数值" Key = "Value" Default="3"/>
+  <Item Type="ComboBox" Name="ChangeType" CHName="改变自定义属性数值的算法" Key = "ChangeType" Default="0">
+    <Childes>
+	  <Child Name="Assignment" CHName="赋值" ID="1"/> 
+	  <Child Name="Minus" CHName="减去" ID="0"/>
+	  <Child Name="Plus" CHName="加法" ID="2"/>
+    </Childes>
+  </Item>
+  <Item Type="ComboBox" Name="Limit" CHName="限制" Key = "Limit" Default="0">
+    <Childes>
+	  <Child Name="LessThanEqualtoZero" CHName="小于等于零" ID="1"/> 
+	  <Child Name="GreaterThanAndEqualtoZero" CHName="大于等于零" ID="0"/>
+	  <Child Name="AnyWay" CHName="无所谓" ID="2"/>
+    </Childes>
+  </Item>
+</Root>

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" standalone="yes" ?>
+<Root>
+  <Item Type="NodeTag" Name="NodeTag" CHName="渲染节点标签" Key = "Tag" Default="10000" />
+  <Item Type="IntegerUpDown" Name="x" CHName="移动到位置X坐标" Key = "x" Default="1.0"/>
+  <Item Type="IntegerUpDown" Name="y" CHName="移动到位置Y坐标" Key = "y" Default="1.0"/>
+  <Item Type="DoubleUpDown" Name="Duration" CHName="移动到位置的持续时间" Key = "Duration" Default="1.0"/>
+</Root>

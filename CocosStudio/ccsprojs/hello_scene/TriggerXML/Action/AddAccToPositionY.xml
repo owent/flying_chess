@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" standalone="yes" ?>
+<Root>
+  <Item Type="NodeTag" Name="NodeTag" CHName="渲染节点标签" Key = "Tag" Default="10000" />
+  <Item Type="TextBox" Name="ComponentName"  CHName="组件名字" Key = "ComName" Default="CCComAttribute" />
+  <Item Type="TextBox" Name="UpSpeed"  CHName="自定义属性组件关键值" Key = "Key" Default="UpSpeed" />
+  <Item Type="DoubleUpDown" Name="Acceleration" CHName="自定义属性组件关键值" Key = "Acceleration" Default="3" />
+</Root>

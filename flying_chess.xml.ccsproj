@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<GameProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ProjectDir>D:\Libs\cocos2d\demo\flying_chess</ProjectDir>
+  <Version>1.6.0.0</Version>
+  <Resources>D:\Libs\cocos2d\demo\flying_chess</Resources>
+  <Name>flying_chess</Name>
+  <JsonFileName>flying_chess.json</JsonFileName>
+  <JsonList />
+  <CanvasSize>
+    <Width>480</Width>
+    <Height>320</Height>
+  </CanvasSize>
+  <filePath>D:\Libs\cocos2d\demo\flying_chess\flying_chess.xml.ccsproj</filePath>
+  <ProjectType>GameProject</ProjectType>
+  <ResRelativePath />
+  <ResProjFolder>D:\Libs\cocos2d\demo\flying_chess\CocosStudio\ccsprojs</ResProjFolder>
+  <AssetsDir>D:\Libs\cocos2d\demo\flying_chess\CocosStudio\assets</AssetsDir>
+  <LanaguageType>cpp</LanaguageType>
+</GameProject>

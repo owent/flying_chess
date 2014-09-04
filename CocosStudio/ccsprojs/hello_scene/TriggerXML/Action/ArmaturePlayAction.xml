@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" standalone="yes" ?>
+<Root>
+  <Item Type="NodeTag" Name="NodeTag" CHName="渲染节点标签" Key = "Tag" Default="10000" />
+  <Item Type="NodeCom" Name="ComponentName"  CHName="组件名称" Key = "componentName" Default="CCArmature" />
+  <Item Type="TextBox" Name="AnimationName"  CHName="动画名称" Key = "AnimationName" Default="run" />
+</Root>

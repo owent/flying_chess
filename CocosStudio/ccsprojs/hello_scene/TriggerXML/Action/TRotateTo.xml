@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" standalone="yes" ?>
+<Root>
+  <Item Type="NodeTag" Name="NodeTag" CHName="渲染节点标签" Key = "Tag" Default="10000" />
+  <Item Type="DoubleUpDown" Name="DeltaAngle" CHName="旋转到" Key = "DeltaAngle" Default="90"/>
+  <Item Type="DoubleUpDown" Name="Duration" CHName="持续时间" Key = "Duration" Default="2"/>
+</Root>

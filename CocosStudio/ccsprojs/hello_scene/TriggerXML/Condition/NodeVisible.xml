@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" standalone="yes" ?>
+<Root>
+   <Item Type="NodeTag" Name="NodeTag" CHName="渲染节点标签" Key = "Tag" Default="10000" />
+   <Item Type="ComboBox" Name="IsVisible" CHName="是否显示" Key = "Visible" Default="0" >
+    <Childes>
+      <Child Name="True" CHName="显示" ID="1"/>
+      <Child Name="False" CHName="不显示" ID="0"/>
+    </Childes>
+  </Item>
+</Root>

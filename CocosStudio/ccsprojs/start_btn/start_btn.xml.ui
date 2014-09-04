@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<UIProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ProjectDir>D:\Libs\cocos2d\demo\flying_chess\CocosStudio\ccsprojs\start_btn</ProjectDir>
+  <Version>1.6.0.0</Version>
+  <Resources>D:\Libs\cocos2d\demo\flying_chess\CocosStudio\assets</Resources>
+  <Name>start_btn</Name>
+  <JsonFileName>start_btn.json</JsonFileName>
+  <JsonFolder>D:\Libs\cocos2d\demo\flying_chess\CocosStudio\ccsprojs\start_btn\Json</JsonFolder>
+  <JsonList>
+    <string>start_btn_1.json</string>
+  </JsonList>
+  <CanvasSize>
+    <Width>160</Width>
+    <Height>64</Height>
+  </CanvasSize>
+  <filePath>D:\Libs\cocos2d\demo\flying_chess\CocosStudio\ccsprojs\start_btn\start_btn.xml.ui</filePath>
+  <ProjectType>UIProject</ProjectType>
+  <ResRelativePath>\\..\\..\\assets</ResRelativePath>
+  <imageFileList>
+    <string>start_btn0.plist</string>
+  </imageFileList>
+  <imagePngList />
+  <JsonSuffix>.json</JsonSuffix>
+  <CurrentUIJson>start_btn_1.json</CurrentUIJson>
+</UIProject>

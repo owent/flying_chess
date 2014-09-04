@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<AnimationProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ProjectDir>D:\Libs\cocos2d\demo\flying_chess\CocosStudio\ccsprojs\roll_points</ProjectDir>
+  <Version>1.6.0.0</Version>
+  <Resources>D:\Libs\cocos2d\demo\flying_chess\CocosStudio\assets</Resources>
+  <Name>roll_points</Name>
+  <JsonFileName>roll_points.json</JsonFileName>
+  <JsonFolder>D:\Libs\cocos2d\demo\flying_chess\CocosStudio\ccsprojs\roll_points\Json</JsonFolder>
+  <JsonList />
+  <CanvasSize>
+    <Width>0</Width>
+    <Height>0</Height>
+  </CanvasSize>
+  <filePath>D:\Libs\cocos2d\demo\flying_chess\CocosStudio\ccsprojs\roll_points\roll_points.xml.animation</filePath>
+  <ProjectType>AnimationProject</ProjectType>
+  <ResRelativePath>\\..\\..\\assets</ResRelativePath>
+  <ResourceFileList />
+  <bBatchImage>true</bBatchImage>
+</AnimationProject>

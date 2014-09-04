@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<SceneProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ProjectDir>D:\Libs\cocos2d\demo\flying_chess\CocosStudio\ccsprojs\game_plane</ProjectDir>
+  <Version>1.6.0.0</Version>
+  <Resources>D:\Libs\cocos2d\demo\flying_chess</Resources>
+  <Name>game_plane</Name>
+  <JsonFileName>game_plane.json</JsonFileName>
+  <JsonFolder>D:\Libs\cocos2d\demo\flying_chess\CocosStudio\assets\publish</JsonFolder>
+  <JsonList />
+  <CanvasSize>
+    <Width>960</Width>
+    <Height>640</Height>
+  </CanvasSize>
+  <filePath>D:\Libs\cocos2d\demo\flying_chess\CocosStudio\ccsprojs\game_plane\game_plane.xml.scene</filePath>
+  <ProjectType>SceneProject</ProjectType>
+  <ResRelativePath>\\..\\..\\assets</ResRelativePath>
+  <JSFileList />
+  <DefaultUI_JSList />
+  <Res>D:\Libs\cocos2d\demo\flying_chess\CocosStudio\assets</Res>
+</SceneProject>

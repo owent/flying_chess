@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" standalone="yes" ?>
+<Root>
+  <Item Type="NodeTag" Name="NodeTag" CHName="渲染节点标签" Key = "Tag" Default="10000"/>
+  <Item Type="TextBox" Name="ComponentName" CHName="组件名称" Key = "componentName" Default="CCComAudio"/>
+  <Item Type="ComboBox" Name="MusicType" CHName="声音类型" Key = "type" Default="1">
+    <Childes>
+      <Child Name="BackgroundMusic" CHName="背景音乐" ID="0"/>
+      <Child Name="Effect" CHName="音效" ID="1"/>
+    </Childes>
+  </Item>
+</Root>

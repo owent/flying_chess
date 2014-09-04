@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Root Type="Scene">
+  <ConditionList>
+    <Condition ClassName="TimeElapsed" Name="TimeElapsedTo" CHName="时间超过（TimeElapsedTo）"/>
+	<Condition ClassName="ArmatureActionState" Name="ActionState" CHName="骨骼动画播放状态（ActionState）"/>
+	<Condition ClassName="NodeInRect" Name="IsNodeInRect" CHName="节点是否在矩形区域内（IsNodeInRect）"/>
+	<Condition ClassName="NodeVisible" Name="IsNodeVisible" CHName="节点是否显示（IsNodeVisible）"/>
+	<Condition ClassName="RectangleCollisionTest" Name="RectangleCollisionTest" CHName="节点碰撞检测（RectangleCollisionTest）"/>
+  </ConditionList>
+</Root>
+

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" standalone="yes" ?>
+<Root>
+  <Item Type="NodeTag" Name="NodeTag" CHName="渲染节点A的标签" Key = "Tag_A" Default="10000" />
+  <Item Type="TextBox" Name="NodeComponentName"  CHName="渲染节点A组件名称" Key = "ComName_A" Default="CCArmature" />
+  <Item Type="IntegerUpDown" Name="AOffsetX" CHName="节点A矩形碰撞X修正值" Key = "AOffsetX" Default="0"/>
+  <Item Type="IntegerUpDown" Name="AOffsetY" CHName="节点A矩形碰撞Y修正值" Key = "AOffsetY" Default="0"/>
+  <Item Type="MultiNode" Name="NodesTag" CHName="节点们的标签" Key = "Tags" Default="" />
+  <Item Type="TextBox" Name="NodesComponentName" CHName="其他节点们的组件名称" Key = "ComName_B" Default="CCSprite" />
+  <Item Type="IntegerUpDown" Name="NodesOffsetX" CHName="节点们矩形碰撞X修正值" Key = "BOffsetX" Default="0"/>
+  <Item Type="IntegerUpDown" Name="NodesOffsetY" CHName="节点们矩形碰撞Y修正值" Key = "BOffsetY" Default="0"/>
+</Root>

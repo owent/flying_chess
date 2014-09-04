@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" standalone="yes" ?>
+<Root>
+  <Item Type="TextBox" Name="UIJsonName" CHName="UI的Json名称" Key = "UIJsonName" Default="EndMenu.ExportJson"/>
+  <Item Type="TextBox" Name="AnimationName" CHName="UI的动画名称" Key = "AnimationName" Default="Action"/>
+</Root>

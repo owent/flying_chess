@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" standalone="yes" ?>
+<Root>
+  <Item Type="DoubleUpDown" Name="Timebeyond" CHName="时间超过" Key = "TotalTime" Default="10.0"/>
+</Root>

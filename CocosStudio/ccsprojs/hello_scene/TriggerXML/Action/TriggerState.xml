@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" standalone="yes" ?>
+<Root>
+  <Item Type="IntegerUpDown" Name="Trigger ID" CHName="触发器ID" Key = "ID" Default="-1" />
+  <Item Type="ComboBox" Name="State" CHName="触发器状态" Key = "State" Default="0">
+    <Childes>
+	  <Child Name="Open" CHName="开启触发器" ID="1"/>
+	  <Child Name="Close" CHName="关闭触发器" ID="0"/>
+	  <Child Name="Delete" CHName="删除触发器" ID="2"/>
+    </Childes>
+  </Item>
+</Root>

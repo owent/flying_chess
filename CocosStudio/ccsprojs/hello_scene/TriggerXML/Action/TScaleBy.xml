@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" standalone="yes" ?>
+<Root>
+  <Item Type="NodeTag" Name="NodeTag" CHName="渲染节点标签" Key = "Tag" Default="10000" />
+  <Item Type="DoubleUpDown" Name="ScaleX" CHName="x轴缩放了" Key = "ScaleX" Default="1.0"/>
+  <Item Type="DoubleUpDown" Name="ScaleY" CHName="y轴缩放了" Key = "ScaleY" Default="1.0"/>
+  <Item Type="DoubleUpDown" Name="Duration" CHName="持续时间" Key = "Duration" Default="1.0"/>
+  <Item Type="ComboBox" Name="IsReverse" CHName="是否返回" Key = "IsReverse" Default="1">
+    <Childes>
+      <Child Name="Yes" CHName="是" ID="1"/>
+      <Child Name="No" CHName="否" ID="0"/>
+    </Childes>
+  </Item>
+</Root>

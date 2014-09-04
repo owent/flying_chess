@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Root Type="Scene">
+  <ActionList>
+    <Action ClassName="PlayMusic" Name="PlayMusic" CHName="播放音乐（PlayMusic）"/>
+	<Action ClassName="TMoveTo" Name="MoveTo" CHName="移动到（MoveTo）"/>
+	<Action ClassName="TMoveBy" Name="MoveBy" CHName="移动（MoveBy）"/>
+	<Action ClassName="TRotateTo" Name="RotateTo" CHName="旋转到（RotateTo）"/>
+	<Action ClassName="TRotateBy" Name="RotateBy" CHName="旋转（RotateBy）"/>
+	<Action ClassName="TScaleTo" Name="ScaleTo" CHName="缩放到（ScaleTo）"/>
+	<Action ClassName="TScaleBy" Name="ScaleBy" CHName="缩放（ScaleBy）"/>
+	<Action ClassName="TSkewTo" Name="SkewTo" CHName="歪曲到（SkewTo）"/>
+	<Action ClassName="TSkewBy" Name="SkewBy" CHName="歪曲（SkewBy）"/>
+	<Action ClassName="ArmaturePlayAction" Name="ArmaturePlayAction" CHName="骨骼播放动画（ArmaturePlayAction）"/>
+	<Action ClassName="SequenceMoveTo" Name="SequenceMoveTo" CHName="序列移动到（SequenceMoveTo）"/>
+	<Action ClassName="JumpAction" Name="JumpAction" CHName="向上跳并旋转动作（JumpAction）"/>
+	<Action ClassName="FallAction" Name="FallAction" CHName="向下坠并旋转动作（FallAction）"/>
+	<Action ClassName="ChangeDoubleAttribute" Name="ChangeDoubleAttribute"  CHName="改变Double自定义属性（ChangeDoubleAttribute）"/>
+	<Action ClassName="AddAccToPositionY" Name="AddAccToPositionY" CHName="增加加速度在Y坐标（AddAccToPositionY）"/>
+	<Action ClassName="SequenceMoveToAndChangePositionY" Name="SequenceMoveToAndChangePositionY" CHName="序列移动同时Y坐标随机（SequenceMoveToAndChangePositionY）"/>
+	<Action ClassName="SetNodeVisible" Name="SetNodeVisible" CHName="设置节点隐藏显示（SetNodeVisible）"/>
+	<Action ClassName="PlayUIAnimation" Name="PlayUIAnimation" CHName="播放UI动画"/>
+	<Action ClassName="StopAllActions" Name="StopAllActions" CHName="停止所有动画"/>
+	<Action ClassName="TriggerState" Name="TriggerState" CHName="触发器状态（TriggerState）"/>
+  </ActionList>
+</Root>
+

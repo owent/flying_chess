@@ -19,3 +19,12 @@
 *.exe
 *.out
 *.app
+
+# build cache - vs
+proj.win32/Debug.win32
+proj.win32/Release.win32
+proj.win32/*.sdf
+
+# build cache - ant & ndk
+
+# build cache - ios

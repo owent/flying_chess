@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" standalone="yes" ?>
+<Root>
+  <Item Type="NodeTag" Name="NodeTag" CHName="渲染节点标签" Key = "Tag" Default="10000" />
+  <Item Type="DoubleUpDown" Name="RiseHeight" CHName="向上移动高度" Key = "RiseHeight" Default="60.0"/>
+  <Item Type="DoubleUpDown" Name="RiseTime" CHName="向上移动时间" Key = "RiseTime" Default="0.2"/>
+  <Item Type="DoubleUpDown" Name="JumpDelayTime" CHName="向上移动延迟时间" Key = "JumpDelayTime" Default="0.1"/>
+  <Item Type="DoubleUpDown" Name="RotationTo" CHName="旋转到" Key = "RotationTo" Default="-30"/>
+</Root>

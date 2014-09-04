@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" standalone="yes" ?>
+<Root>
+  <Item Type="NodeTag" Name="NodeTag" CHName="渲染节点标签" Key = "Tag" Default="10000" />
+  <Item Type="NodeCom" Name="ComponentName" CHName="组件名称" Key = "componentName" Default="CCArmature" />
+  <Item Type="TextBox" Name="AnimationName"  CHName="动作的名称" Key = "AnimationName" Default="run" />
+  <Item Type="ComboBox" Name="ActionState" CHName="动作的状态" Key = "ActionType" Default="0">
+    <Childes>
+      <Child Name="START" CHName="开始播放" ID="0"/>
+      <Child Name="COMPLETE" CHName="播放完毕" ID="1"/>
+	  <Child Name="LOOP_COMPLETE" CHName="循环播放完毕" ID="2"/>
+    </Childes>
+  </Item>
+</Root>

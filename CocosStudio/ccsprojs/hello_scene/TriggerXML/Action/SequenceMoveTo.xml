@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" standalone="yes" ?>
+<Root>
+  <Item Type="NodeTag" Name="NodeTag" CHName="渲染节点标签" Key = "Tag" Default="10000" />
+  <Item Type="IntegerUpDown" Name="EndX" CHName="移动到的X坐标" Key = "EndX" Default="-120"/>
+  <Item Type="IntegerUpDown" Name="EndY" CHName="移动到的Y坐标" Key = "EndY" Default="0"/>
+  <Item Type="DoubleUpDown" Name="EndDuration" CHName="移动到终点的持续时间" Key = "EndDuration" Default="2.0"/>
+  <Item Type="IntegerUpDown" Name="StartX" CHName="起点的X坐标" Key = "StartX" Default="0"/>
+  <Item Type="IntegerUpDown" Name="StartY" CHName="起点的Y坐标" Key = "StartY" Default="0"/>
+  <Item Type="DoubleUpDown" Name="StartDuration" CHName="移动到起点的持续时间" Key = "StartDuration" Default="0.0"/>
+  <Item Type="DoubleUpDown" Name="DelayTime" CHName="移动到终点的延迟时间" Key = "DelayTime" Default="-1"/>
+  <Item Type="ComboBox" Name="IsRepeatForever" CHName="是否永远重复" Key = "IsRepeatForever" Default="1">
+    <Childes>
+	  <Child Name="Yes" CHName="是" ID="1"/>
+	  <Child Name="No" CHName="否" ID="0"/>
+    </Childes>
+  </Item>
+</Root>
