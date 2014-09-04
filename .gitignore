@@ -24,6 +24,7 @@
 proj.win32/Debug.win32
 proj.win32/Release.win32
 proj.win32/*.sdf
+proj.win32/*.opensdf
 
 # build cache - ant & ndk
 
