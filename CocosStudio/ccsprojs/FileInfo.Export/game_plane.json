@@ -16,6 +16,7 @@
   "publish/plane_color_3.ExportJson",
   "publish/roll_points_panel.ExportJson",
   "publish/game_panel_bk.ExportJson",
+  "publish/gameover_dialog.ExportJson",
   "Sound/bgm.mp3",
   "Sound/GoHome.mp3",
   "Sound/Jump.mp3",

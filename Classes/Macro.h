@@ -21,11 +21,15 @@ namespace fc {
     };
 
     enum LeaveGridReason {
+        LGR_MOVE_UNKNOWN = 0,    // 未知
         LGR_MOVE_START = 0x0001, // 正常移动启动
         LGR_KICKOFF = 0x0002,    // 击毁并被踢回家
         LGR_WIN = 0x0004,        // 到达终点
         LGR_PASS = 0x0008,       // 路过
         LGR_JUMP = 0x0010,       // 跳跃
+        LGR_FLY = 0x0020,        // 飞过
+
+        LGR_ARRIVE = 0x0100,     // 停留
     };
 
     enum PlayerSelecter {

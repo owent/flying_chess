@@ -33,7 +33,7 @@ namespace fc {
         }
 
         if (clear) {
-            plane_number = EP_MAX;
+            SetPlaneNumber(EP_MAX);
             RollPoints::GetInstance().Reset();
         }
 
@@ -122,7 +122,7 @@ namespace fc {
     }
 
     void Judger::SetPlaneNumber(int n) {
-        plane_number = n % (EP_MAX + 1);
+        plane_number = (n - 1) % EP_MAX + 1;
     }
 
     EnPlayerColor Judger::GetTopActionPlayer() const {
@@ -165,12 +165,37 @@ namespace fc {
                     continue;
 
                 int rdn = rand() & 0xFF;
-                // 启动得分
-                if (!plane.IsStarted() && 6 == cache_points)
-                    plane_score[i] = (Config::GetInstance().AICfg.Start << 8) + rdn;
-                // 走格子得分
-                auto grid = GridPool::Find(plane.GetLocateGridID());
-                plane_score[i] = grid->GetScore(plane.Color(), cache_points, plane.GetLeftJump(), plane.GetLeftFly());
+                do {
+                    // 胜利则跳过
+                    if (plane.IsWin()) {
+                        plane_score[i] = std::numeric_limits<int>::min();
+                        break;
+                    }
+
+                    // 不可用则跳过
+                    if (!plane.IsAvailable()) {
+                        plane_score[i] = std::numeric_limits<int>::min();
+                        break;
+                    }
+
+                    auto grid = GridPool::Find(plane.GetLocateGridID());
+                    // 启动得分
+                    if (!plane.IsStarted() && 6 == cache_points) {
+                        plane_score[i] = Config::GetInstance().AICfg.Start;
+                        plane_score[i] += grid->GetScore(plane.Color(), 1, plane.GetLeftJump(), plane.GetLeftFly());
+                        break;
+                    }
+
+                    // 普通得分
+                    if (plane.IsStarted()) {
+                        plane_score[i] = grid->GetScore(plane.Color(), cache_points, plane.GetLeftJump(), plane.GetLeftFly());
+                        break;
+                    }
+
+                    plane_score[i] = std::numeric_limits<int>::min();
+                } while (false);
+                if (plane_score[i])
+                    plane_score[i] = (plane_score[i] << 8) | rdn;
 
                 if (plane_score[i] > plane_score[sel_index])
                     sel_index = i;
@@ -204,6 +229,7 @@ namespace fc {
     }
 
     void Judger::gameover() {
+        cocos2d::log("gameover");
         GameScene* game_scene = dynamic_cast<GameScene*>(cocos2d::Director::getInstance()->getRunningScene());
         if (NULL != game_scene)
             game_scene->onGameOver();

@@ -3,6 +3,7 @@
 
 flying chess written with cocos2d-x 3.X
 
+仅仅是为了了解下cocos2d，这个示例的代码没有经过任何的深思熟虑，结构会比较混乱
 
 构建说明
 ------

@@ -7,13 +7,15 @@
     "actionlist": []
   },
   "dataScale": 1,
-  "designHeight": 240,
-  "designWidth": 320,
+  "designHeight": 75,
+  "designWidth": 75,
   "textures": [
     "game_panel0.plist",
     "game_panel1.plist"
   ],
   "texturesPng": [
+    "game_panel0.png",
+    "game_panel1.png",
     "game_panel0.png",
     "game_panel1.png",
     "game_panel0.png",
@@ -64,7 +66,7 @@
       "sizeType": 0,
       "tag": 51,
       "touchAble": true,
-      "useMergedTexture": true,
+      "useMergedTexture": false,
       "visible": true,
       "width": 75,
       "x": 0,

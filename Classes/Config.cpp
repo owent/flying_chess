@@ -31,7 +31,7 @@ namespace fc {
         func_node = root->FirstChildElement("Rolls");
         init_rolls(func_node);
 
-        func_node = root->FirstChildElement("Rolls");
+        func_node = root->FirstChildElement("AI");
         init_ai(func_node);
     }
 
@@ -202,9 +202,9 @@ namespace fc {
         AICfg.Jump = 4;
         AICfg.Fly = 12;
         AICfg.KillEnermy = 20;
-        AICfg.KillFriend = -20;
-        AICfg.Win = 50;
-        AICfg.Start = 50;
+        AICfg.KillFriend = -50;
+        AICfg.Win = 30;
+        AICfg.Start = 30;
 
         if (NULL == xml_node)
             return;

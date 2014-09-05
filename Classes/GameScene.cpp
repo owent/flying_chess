@@ -134,12 +134,18 @@ void GameScene::updateData() {
 
 void GameScene::onGameOver() {
 
-    // Ω‚∞ÛUI
-    for (int i = 0; i < fc::EPC_MAX; ++i)
-        for (int j = 0; j < fc::EP_MAX; ++j)
-            fc::Player::Pool[i][j].SetUI(NULL);
+    auto gameover_dialog = dynamic_cast<Layout*>(cocostudio::GUIReader::getInstance()->widgetFromJsonFile("publish/gameover_dialog.ExportJson"));
 
-    fc::RollPoints::GetInstance().SetUI(NULL);
+    m_pGameLayout->addChild(gameover_dialog);
+    gameover_dialog->setAnchorPoint(Vec2(0.5, 0.5));
+    gameover_dialog->setPosition(Vec2(m_pGameLayout->getPositionX() / 2.0f, m_pGameLayout->getPositionY() / 2.0f));
 
-    Director::getInstance()->replaceScene(HelloScene::scene());
+    Button* ok_button = static_cast<Button*>(Helper::seekWidgetByName(gameover_dialog, "Button_GameOver"));
+
+    ok_button->addTouchEventListener([](Ref* pSender, Widget::TouchEventType type){
+        if (type == Widget::TouchEventType::ENDED) {
+            Director::getInstance()->replaceScene(HelloScene::scene());
+        }
+    });
+
 }

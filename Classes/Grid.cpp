@@ -70,30 +70,10 @@ namespace fc {
     }
 
     void Grid::OnLeave(Plane& plane, int reason) {
-        if (reason & LGR_MOVE_START) {
-            // 播放启动音效
-            SoundMgr::GetInstance().PlayMove();
-        }
-
-        if (reason & LGR_KICKOFF) {
-            // 播放被击毁音效
-            SoundMgr::GetInstance().PlayGoHome();
-        }
-
-        if (reason & LGR_WIN) {
-            // 播放到达终点音效
-            SoundMgr::GetInstance().PlayJump();
-        }
-
-        if (reason & LGR_JUMP) {
-            // 播放跳跃音效
-            SoundMgr::GetInstance().PlayJump();
-        }
-
         place_plane = NULL;
     }
 
-    Grid::grid_ptr Grid::OnPass(Plane& plane, int& left_point) {
+    Grid::grid_ptr Grid::OnPass(Plane& plane, int& left_point, int reason) {
         grid_ptr move_to;
         if (left_point > 0) {
             --left_point;
@@ -106,7 +86,7 @@ namespace fc {
         }
 
         // 添加飞机运动动画
-        MoveHere(plane, plane.GetSpeed(), 0.0f);
+        MoveHere(plane, plane.GetSpeed(), 0.0f, reason);
 
         if (!move_to)
             return GridPool::Find(ID());
@@ -114,20 +94,20 @@ namespace fc {
         return move_to;
     }
 
-    void Grid::OnArrive(Plane& plane) {
+    void Grid::OnArrive(Plane& plane, int reason) {
         Plane* old_place_plane = place_plane;
         // 添加飞机运动动画
-        MoveHere(plane, plane.GetSpeed(), 0.0f);
+        MoveHere(plane, plane.GetSpeed(), 0.0f, reason);
 
         // 击毁已有的Plane
         if (NULL != old_place_plane) {
             // 被击毁飞机回家
-            old_place_plane->GoHome(LGR_KICKOFF);
+            old_place_plane->GoHome(LGR_KICKOFF, plane.GetActionTime());
         }
         place_plane = &plane;
 
 
-        arrive_event(plane);
+        arrive_event(plane, old_place_plane);
 
         // 计算跳跃
         if (Color() == plane.Color() && plane.CanJump() && jump != ID()) {
@@ -138,11 +118,18 @@ namespace fc {
         // 胜利条件
     }
 
-    void Grid::OnCross(Plane& plane) {
+    void Grid::OnCross(Plane& plane, Plane* old_plane, grid_ptr from, grid_ptr to) {
         // 击毁已有的Plane
-        if (NULL != place_plane) {
+        if (NULL != old_plane) {
+            float sub_t = 0.0f;
+            if (to) {
+                using cocos2d::Vec2;
+                Vec2 t = Vec2(to->GetPositionX(), to->GetPositionY());
+                Vec2 m = Vec2(GetPositionX(), GetPositionY());
+                sub_t = t.distance(m) / Config::GetInstance().Plane.FlySpeed;
+            }
             // 被击毁飞机回家
-            plane.GoHome(LGR_KICKOFF);
+            old_plane->GoHome(LGR_KICKOFF, plane.GetActionTime() - sub_t);
         }
 
     }
@@ -160,9 +147,9 @@ namespace fc {
         return GridPool::Find(jump);
     }
 
-    void Grid::MoveHere(Plane& plane, float speed, float delay_time) {
+    void Grid::MoveHere(Plane& plane, float speed, float delay_time, int reason) {
         if (ID() == plane.GetLocateGridID()) {
-            plane.AddAnimationAction(*this, 0.0f, delay_time);
+            plane.AddAnimationAction(*this, 0.0f, delay_time, reason);
             return;
         }
 
@@ -174,9 +161,9 @@ namespace fc {
         from.set(locate->GetPositionX(), locate->GetPositionY());
         to.set(GetPositionX(), GetPositionY());
 
-        plane.AddAnimationAction(*this, to.distance(from) / speed, delay_time);
+        plane.AddAnimationAction(*this, to.distance(from) / speed, delay_time, reason);
     }
 
-    void Grid::arrive_event(Plane& plane) {
+    void Grid::arrive_event(Plane& plane, Plane* old_plane) {
     }
 }

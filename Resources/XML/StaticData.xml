@@ -559,5 +559,5 @@
         <Roll X='6' Y='10' Color='2'></Roll>
         <Roll X='10' Y='10' Color='3'></Roll>
     </Rolls>
-    <AI Move='1' Jump='4' Fly='12' KillEnermy='20' KillFriend='-20' Win='50' Start='50'></AI>
+    <AI Move='1' Jump='4' Fly='12' KillEnermy='20' KillFriend='-50' Win='30' Start='30'></AI>
 </Root>

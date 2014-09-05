@@ -7,8 +7,8 @@
     "actionlist": []
   },
   "dataScale": 1,
-  "designHeight": 75,
-  "designWidth": 75,
+  "designHeight": 240,
+  "designWidth": 320,
   "textures": [
     "game_panel0.plist",
     "game_panel1.plist"

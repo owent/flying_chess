@@ -40,7 +40,7 @@ namespace fc {
         /**
         * @brief Grid的Pass事件
         */
-        virtual grid_ptr OnPass(Plane& plane, int& left_point);
+        virtual grid_ptr OnPass(Plane& plane, int& left_point, int reason);
 
         /**
         * @brief Grid的Arrive事件
@@ -49,13 +49,13 @@ namespace fc {
         * @note   -- 计算飞行
         * @note   -- 胜利条件
         */
-        virtual void OnArrive(Plane& plane);
+        virtual void OnArrive(Plane& plane, int reason);
 
         /**
         * @brief Grid的Cross事件
         * @note   -- 击毁已有的Plane
         */
-        virtual void OnCross(Plane& plane);
+        virtual void OnCross(Plane& plane, Plane* old_plane, grid_ptr from, grid_ptr to);
 
 
         inline int ID() const { return id; }
@@ -67,9 +67,9 @@ namespace fc {
         grid_ptr GetPreviousGrid();
         grid_ptr GetJumpGrid();
 
-        void MoveHere(Plane& plane, float speed, float delay_time);
+        void MoveHere(Plane& plane, float speed, float delay_time, int reason);
     private:
-        virtual void arrive_event(Plane& plane);
+        virtual void arrive_event(Plane& plane, Plane* old_plane);
 
     protected:
         int x;

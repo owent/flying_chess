@@ -28,4 +28,8 @@
     <Project>roll_points_panel</Project>
     <GuidesList />
   </GuidesProject>
+  <GuidesProject>
+    <Project>gameover_dialog</Project>
+    <GuidesList />
+  </GuidesProject>
 </ArrayOfGuidesProject>

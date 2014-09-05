@@ -7,6 +7,7 @@
 #include "Plane.h"
 #include "Grid.h"
 #include "Judger.h"
+#include "SoundMgr.h"
 
 #include <2d/CCActionInterval.h>
 #include <2d/CCActionInstant.h>
@@ -27,13 +28,13 @@ namespace fc {
         speed = Config::GetInstance().Plane.MoveSpeed;
 
         is_win = !available;
-        is_start = false;
 
         at_grid = home_grid;
 
         // UI - Actions
         m_pUILayout = NULL;
         m_stUIActions.clear();
+        SetActionTime(0.0f);
     }
 
 
@@ -44,7 +45,7 @@ namespace fc {
         if (is_win)
             return false;
 
-        if (!is_start) {
+        if (!IsStarted()) {
             // 启动状态转化为启动出发
             point = 1;
         }
@@ -58,25 +59,24 @@ namespace fc {
         using std::abs;
         while (point) {
             grid->OnLeave(*this, reason);
-            reason = LGR_PASS;
+            auto next = grid->OnPass(*this, point, reason);
 
-            auto next = grid->OnPass(*this, point);
+            reason = LGR_PASS;
             if (!next)
                 break;
 
             grid = next;
         }
 
-        return MoveTo(grid->ID());
+        return MoveTo(grid->ID(), LGR_ARRIVE);
     }
 
-    bool Plane::MoveTo(int grid_id) {
+    bool Plane::MoveTo(int grid_id, int reason) {
         GridPool::grid_ptr grid = GridPool::Find(grid_id);
         if (!grid)
             return false;
 
-        is_start = !(grid_id == home_grid);
-        grid->OnArrive(*this);
+        grid->OnArrive(*this, reason);
         return true;
     }
 
@@ -90,9 +90,9 @@ namespace fc {
         GridPool::grid_ptr grid = GridPool::Find(at_grid);
         if (!grid)
             return false;
-        grid->OnLeave(*this, LGR_JUMP);
+        grid->OnLeave(*this, LGR_FLY | LGR_ARRIVE);
 
-        return MoveTo(grid_id);
+        return MoveTo(grid_id, LGR_FLY | LGR_ARRIVE);
     }
 
     bool Plane::JumpTo(int grid_id) {
@@ -105,12 +105,12 @@ namespace fc {
         GridPool::grid_ptr grid = GridPool::Find(at_grid);
         if (!grid)
             return false;
-        grid->OnLeave(*this, LGR_JUMP);
+        grid->OnLeave(*this, LGR_JUMP | LGR_ARRIVE);
 
-        return MoveTo(grid_id);
+        return MoveTo(grid_id, LGR_JUMP | LGR_ARRIVE);
     }
 
-    bool Plane::GoHome(int reason) {
+    bool Plane::GoHome(int reason, float delay) {
         if (GetLocateGridID() == home_grid)
             return false;
 
@@ -121,11 +121,13 @@ namespace fc {
             return false;
         grid->OnLeave(*this, reason);
 
-        bool ret = MoveTo(home_grid);
+        bool ret = MoveTo(home_grid, reason);
 
         // 胜利则追加disable动画
-        if (LGR_WIN == reason)
-            AddDisableAction(0.3f, 0);
+        if (LGR_WIN == reason) {
+            AddDisableAction(0.3f, 0, reason);
+            is_win = true;
+        }
         return ret;
     }
 
@@ -152,49 +154,102 @@ namespace fc {
         next_action();
     }
 
-    void Plane::AddAnimationAction(Grid& g, float duration, float delay) {
+    void Plane::AddAnimationAction(Grid& g, float duration, float delay, int reason) {
         UIAction act;
         act.type = UIAT_MOVE;
         act.delay = delay;
         act.duration = duration;
+        act.reason = reason;
         act.param[0] = g.GetPositionX();
         act.param[1] = g.GetPositionY();
         m_stUIActions.push_back(act);
+
+        AddActionTime(duration + delay);
 
         at_grid = g.ID();
         next_action();
     }
 
-    void Plane::AddDisableAction(float duration, float delay) {
+    void Plane::AddDisableAction(float duration, float delay, int reason) {
         UIAction act;
         act.type = UIAT_DISABLE;
         act.delay = delay;
         act.duration = duration;
+        act.reason = reason;
         m_stUIActions.push_back(act);
+
+        AddActionTime(duration + delay);
 
         next_action();
     }
 
-    void Plane::AddEnableAction(float duration, float delay) {
+    void Plane::AddEnableAction(float duration, float delay, int reason) {
         UIAction act;
         act.type = UIAT_ENABLE;
         act.delay = delay;
         act.duration = duration;
+        act.reason = reason;
         m_stUIActions.push_back(act);
 
+        AddActionTime(duration + delay);
+
         next_action();
+    }
+
+    void Plane::OnActionStart(UIAction* act) {
+        if (NULL == act)
+            return;
+
+        if (act->reason & LGR_MOVE_START) {
+            // 播放启动音效
+            SoundMgr::GetInstance().PlayMove();
+        }
+
+        if (act->reason & LGR_KICKOFF) {
+            // 播放被击毁音效
+            SoundMgr::GetInstance().PlayGoHome();
+        }
+
+        if (act->reason & LGR_WIN) {
+            // 播放到达终点音效
+            SoundMgr::GetInstance().PlayJump();
+        }
+
+        if (act->reason & LGR_JUMP) {
+            // 播放跳跃音效
+            SoundMgr::GetInstance().PlayJump();
+        }
+
+        if (act->reason & LGR_FLY) {
+            // 播放飞行音效
+            SoundMgr::GetInstance().PlayJump();
+        }
+
+    }
+
+    void Plane::OnActionEnd(UIAction* act) {
     }
 
     void Plane::next_action() {
         // 无动作立刻回调
         if (m_stUIActions.empty()) {
+            OnActionStart(NULL);
+            SetActionTime(0.0f);
+            OnActionEnd(NULL);
+
             Judger::GetInstance().DoNext();
             return;
         }
 
         // 无UI对象立刻回调
         if (NULL == m_pUILayout) {
-            m_stUIActions.clear();
+            while (!m_stUIActions.empty()) {
+                auto act = m_stUIActions.front();
+                OnActionStart(&act);
+                m_stUIActions.pop_front();
+                SetActionTime(0.0f);
+                OnActionEnd(&act);
+            }
 
             Judger::GetInstance().DoNext();
             return;
@@ -232,8 +287,12 @@ namespace fc {
 
         auto callback = [this]() {
             // 动作执行完毕，出列
-            if (!m_stUIActions.empty())
+            if (!m_stUIActions.empty()) {
+                auto act = m_stUIActions.front();
+                this->AddActionTime(-(act.delay + act.duration));
                 m_stUIActions.pop_front();
+                OnActionEnd(&act);
+            }
 
             this->next_action();
         };
@@ -245,6 +304,8 @@ namespace fc {
             seq = Sequence::create(ui_action, CallFunc::create(callback), NULL);
 
         // 没有动作序列就立即回调
+        OnActionStart(&act);
+
         if (seq)
             m_pUILayout->runAction(seq);
         else

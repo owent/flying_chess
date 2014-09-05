@@ -19,16 +19,16 @@ namespace fc {
         return -Grid::GetScore(color, point, left_jump, left_fly);
     }
 
-    TargetGrid::grid_ptr TargetGrid::OnPass(Plane& plane, int& left_point) {
+    TargetGrid::grid_ptr TargetGrid::OnPass(Plane& plane, int& left_point, int reason) {
         plane.DisableFly();
         plane.DisableJump();
 
         left_point = -left_point;
-        return Grid::OnPass(plane, left_point);
+        return Grid::OnPass(plane, left_point, reason);
     }
 
-    void TargetGrid::arrive_event(Plane& plane) {
-        plane.GoHome(LGR_WIN);
+    void TargetGrid::arrive_event(Plane& plane, Plane* old_plane) {
+        plane.GoHome(LGR_WIN, 0.0f);
         plane.GetPlayer().OnPlaneWin(++ Player::PlaneRanking);
     }
 }

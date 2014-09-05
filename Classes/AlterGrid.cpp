@@ -31,12 +31,12 @@ namespace fc {
         return point;
     }
 
-    AlterGrid::grid_ptr AlterGrid::OnPass(Plane& plane, int& left_point) {
-        grid_ptr ret = Grid::OnPass(plane, left_point);
+    AlterGrid::grid_ptr AlterGrid::OnPass(Plane& plane, int& left_point, int reason) {
+        grid_ptr ret = Grid::OnPass(plane, left_point, reason);
         grid_ptr straight;
 
         if (Color() == plane.Color()) {
-            grid_ptr straight = GridPool::Find(straight_grid);
+            straight = GridPool::Find(straight_grid);
         }
 
         return straight ? straight: ret;

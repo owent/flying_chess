@@ -121,7 +121,52 @@ bool HelloScene::init()
 
     // 飞机数量选择框
     {
+        auto num_scroll_view = dynamic_cast<ui::ScrollView*>(Helper::seekWidgetByName(m_pHelloLayout, "ListView_Plane_List"));
+        num_scroll_view->setBounceEnabled(true);
+        num_scroll_view->getInnerContainer()->setAnchorPoint(Vec2(0.0f, 1.0f));
+        num_scroll_view->setUserData((void*)(int)1);
 
+        auto callback = [](Ref* sender, ui::ScrollView::EventType type){
+            switch (type) {
+            case cocos2d::ui::ScrollView::EventType::SCROLLING: {
+                ui::ScrollView* me = static_cast<ui::ScrollView*>(sender);
+                auto my_sh = me->getCustomSize().height; // 可视区域范围
+                auto c_sh = me->getInnerContainer()->getContentSize().height - my_sh; // 最大有效活动范围
+                auto c_mh = me->getInnerContainer()->getPositionY() - my_sh; // 当前位置偏移
+
+                const int ele_num = me->getChildrenCount();
+                auto unit_h = c_sh / (ele_num - 1); // 每个选项UI组件占用长度
+
+                int now_select_index = (int) me->getUserData();
+                int select_index = 0;
+
+                // Select NO. 1
+                if (c_mh < unit_h * 0.5f)
+                    select_index = 1;
+                else if (c_mh < c_sh - unit_h * 0.5f)
+                    select_index = (int) ((c_mh + unit_h * 0.5f) / unit_h) + 1;
+                else // Select NO. N
+                    select_index = ele_num;
+
+                // 触发更换选取值
+                if (select_index != now_select_index) {
+                    me->setUserData((void*) select_index);
+                    log("change plane number from %d to %d.", now_select_index, select_index);
+                    fc::Judger::GetInstance().SetPlaneNumber(select_index);
+                    auto old_item = me->getChildren().at(now_select_index - 1);
+                    auto new_item = me->getChildren().at(select_index - 1);
+
+                    old_item->setColor(Color3B(255, 255, 255));
+                    new_item->setColor(Color3B(128, 96, 0));
+                }
+                break;
+            }
+            default:
+                break;
+            }
+        };
+        num_scroll_view->addEventListener((ui::ScrollView::ccScrollViewCallback) (callback));
+        callback(num_scroll_view, cocos2d::ui::ScrollView::EventType::SCROLLING);
     }
 
     // 排行版

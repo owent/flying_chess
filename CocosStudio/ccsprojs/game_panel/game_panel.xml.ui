@@ -14,10 +14,11 @@
     <string>plane_color_2.json</string>
     <string>plane_color_3.json</string>
     <string>roll_points_panel.json</string>
+    <string>gameover_dialog.json</string>
   </JsonList>
   <CanvasSize>
-    <Width>75</Width>
-    <Height>75</Height>
+    <Width>320</Width>
+    <Height>240</Height>
   </CanvasSize>
   <filePath>D:\Libs\cocos2d\demo\flying_chess\CocosStudio\ccsprojs\game_panel\game_panel.xml.ui</filePath>
   <ProjectType>UIProject</ProjectType>
@@ -41,7 +42,9 @@
     <string>game_panel1.png</string>
     <string>game_panel0.png</string>
     <string>game_panel1.png</string>
+    <string>game_panel0.png</string>
+    <string>game_panel1.png</string>
   </imagePngList>
   <JsonSuffix>.json</JsonSuffix>
-  <CurrentUIJson>plane_color_0.json</CurrentUIJson>
+  <CurrentUIJson>hello_panel.json</CurrentUIJson>
 </UIProject>

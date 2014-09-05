@@ -20,10 +20,10 @@ namespace fc {
         return ret;
     }
 
-    StraightGrid::grid_ptr StraightGrid::OnPass(Plane& plane, int& left_point) {
+    StraightGrid::grid_ptr StraightGrid::OnPass(Plane& plane, int& left_point, int reason) {
         plane.DisableFly();
         plane.DisableJump();
 
-        return Grid::OnPass(plane, left_point);
+        return Grid::OnPass(plane, left_point, reason);
     }
 }

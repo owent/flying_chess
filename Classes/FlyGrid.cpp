@@ -42,12 +42,12 @@ namespace fc {
         return GridPool::Find(cross_grid);
     }
 
-    void FlyGrid::arrive_event(Plane& plane) {
+    void FlyGrid::arrive_event(Plane& plane, Plane* old_plane) {
         if (Color() == plane.Color() && plane.CanFly() && jump != ID()) {
 
             auto cross_grid = GetCrossGrid();
             if (cross_grid)
-                cross_grid->OnCross(plane);
+                cross_grid->OnCross(plane, old_plane, GridPool::Find(ID()), GetJumpGrid());
 
             plane.FlyTo(jump);
         }

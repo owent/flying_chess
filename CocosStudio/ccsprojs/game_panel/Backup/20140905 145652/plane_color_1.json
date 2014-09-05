@@ -13,7 +13,24 @@
     "game_panel0.plist",
     "game_panel1.plist"
   ],
-  "texturesPng": [],
+  "texturesPng": [
+    "game_panel0.png",
+    "game_panel1.png",
+    "game_panel0.png",
+    "game_panel1.png",
+    "game_panel0.png",
+    "game_panel1.png",
+    "game_panel0.png",
+    "game_panel1.png",
+    "game_panel0.png",
+    "game_panel1.png",
+    "game_panel0.png",
+    "game_panel1.png",
+    "game_panel0.png",
+    "game_panel1.png",
+    "game_panel0.png",
+    "game_panel1.png"
+  ],
   "version": "1.6.0.0",
   "widgetTree": {
     "classname": "Panel",
@@ -26,7 +43,7 @@
         "options": {
           "__type": "ImageViewSurrogate:#EditorCommon.JsonModel.Component.GUI",
           "classname": "ImageView",
-          "name": "Image_Plane_Color_0",
+          "name": "Image_Plane_Color_1",
           "ZOrder": 0,
           "actiontag": 59408890,
           "anchorPointX": 0.5,
@@ -54,8 +71,8 @@
             "marginLeft": 0,
             "marginRight": 0,
             "marginTop": 0,
-            "relativeName": "Image_Plane_Color_0",
-            "relativeToName": "Panel_Plane_Color_0",
+            "relativeName": "Image_Plane_Color_1",
+            "relativeToName": "Panel_Plane_Color_1",
             "type": 2
           },
           "opacity": 255,
@@ -81,7 +98,7 @@
           "capInsetsY": 0,
           "fileName": null,
           "fileNameData": {
-            "path": "Images/chess_green.png",
+            "path": "Images/chess_blue.png",
             "plistFile": "",
             "resourceType": 0
           },
@@ -94,7 +111,7 @@
     "options": {
       "__type": "PanelSurrogate:#EditorCommon.JsonModel.Component.GUI",
       "classname": "Panel",
-      "name": "Panel_Plane_Color_0",
+      "name": "Panel_Plane_Color_1",
       "ZOrder": 0,
       "actiontag": -1,
       "anchorPointX": 0,
