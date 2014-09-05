@@ -32,4 +32,8 @@
     <Project>gameover_dialog</Project>
     <GuidesList />
   </GuidesProject>
+  <GuidesProject>
+    <Project>exit_dialog</Project>
+    <GuidesList />
+  </GuidesProject>
 </ArrayOfGuidesProject>

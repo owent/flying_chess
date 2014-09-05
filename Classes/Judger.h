@@ -16,6 +16,8 @@ namespace fc {
         Judger();
 
         void Reset(bool clear = true);
+        void OnReadyToStart();
+
         bool OnRollPointBegin();
         bool OnRollPointEnd(int point);
 
@@ -26,6 +28,8 @@ namespace fc {
         void SetPlaneNumber(int n);
 
         EnPlayerColor GetTopActionPlayer() const;
+
+        void CheckGameOver();
     private:
         void next_action();
         void next_player();

@@ -23,4 +23,7 @@ private:
     static Rect s_visibleRect;
 };
 
+float scene_fix_coordinate(float cur, float origin, float fsize, float msize);
+float scene_fix_scale(float scale, float fsize, float msize);
+
 #endif /* __VISIBLERECT_H__ */

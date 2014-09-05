@@ -7,6 +7,7 @@
 #include "Plane.h"
 #include "Grid.h"
 #include "Judger.h"
+#include "Player.h"
 #include "SoundMgr.h"
 
 #include <2d/CCActionInterval.h>
@@ -124,7 +125,7 @@ namespace fc {
         bool ret = MoveTo(home_grid, reason);
 
         // 胜利则追加disable动画
-        if (LGR_WIN == reason) {
+        if (LGR_WIN & reason) {
             AddDisableAction(0.3f, 0, reason);
             is_win = true;
         }
@@ -228,6 +229,9 @@ namespace fc {
     }
 
     void Plane::OnActionEnd(UIAction* act) {
+        if (NULL != act && act->reason & LGR_WIN) {
+            Judger::GetInstance().CheckGameOver();
+        }
     }
 
     void Plane::next_action() {
@@ -291,7 +295,7 @@ namespace fc {
                 auto act = m_stUIActions.front();
                 this->AddActionTime(-(act.delay + act.duration));
                 m_stUIActions.pop_front();
-                OnActionEnd(&act);
+                this->OnActionEnd(&act);
             }
 
             this->next_action();

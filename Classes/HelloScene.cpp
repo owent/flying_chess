@@ -1,4 +1,6 @@
 #include <cstdio>
+#include <limits>
+#include <numeric>
 
 #include "HelloScene.h"
 #include "GameScene.h"
@@ -31,7 +33,7 @@ Scene* HelloScene::scene()
     scene->addChild(layer);
 
     // return the scene
-    return TransitionFade::create(1.2f, scene);
+    return TransitionFade::create(0.5f, scene);
 }
 
 // on "init" you need to initialize your instance
@@ -48,15 +50,34 @@ bool HelloScene::init()
     m_pHelloLayout = dynamic_cast<Layout*>(cocostudio::GUIReader::getInstance()->widgetFromJsonFile("publish/hello_panel.ExportJson"));
     {
         m_pHelloLayout->addTouchEventListener([this](Ref* pSender, Widget::TouchEventType type){
-            if (Widget::TouchEventType::BEGAN == type) {
-                auto me = static_cast<Widget*>(pSender);
+            auto me = static_cast<Widget*>(pSender);
+
+            if (Widget::TouchEventType::BEGAN == type) {    
                 this->m_stTouchMoveStartPosition = me->getPosition();
+                me->getActionManager()->pauseTarget(me);
             } else if (Widget::TouchEventType::MOVED == type) {
-                auto me = static_cast<Widget*>(pSender);
                 auto move_end = me->getTouchMovePosition();
                 auto move_begin = me->getTouchBeganPosition();
                 auto my_pos = this->m_stTouchMoveStartPosition + move_end - move_begin;
                 me->setPosition(my_pos);
+            } else if (Widget::TouchEventType::ENDED == type) {
+                bool need_move = false;
+                me->getActionManager()->removeAllActionsFromTarget(me);
+
+                auto cur_pos = me->getPosition();
+                auto father_size = me->getParent()->getContentSize();
+                auto my_size = me->getContentSize();
+                auto fix_pos = Vec2(
+                    scene_fix_coordinate(cur_pos.x, father_size.width / 2, father_size.width, my_size.width),
+                    scene_fix_coordinate(cur_pos.y, father_size.height / 2, father_size.height, my_size.height)
+                );
+
+                if (std::numeric_limits<float>::epsilon() <= fabs(fix_pos.x - cur_pos.x) || std::numeric_limits<float>::epsilon() <= fabs(fix_pos.y - cur_pos.y)) {
+                    me->runAction(MoveTo::create(.5f, fix_pos));
+                }
+
+            } else if (Widget::TouchEventType::CANCELED == type) {
+                me->getActionManager()->resumeTarget(me);
             }
         });
 
@@ -175,19 +196,29 @@ bool HelloScene::init()
         fc::Player::SortByRanking(player_ranking);
 
         auto player_rk = static_cast<Text*>(Helper::seekWidgetByName(m_pHelloLayout, "Label_Ranking_1"));
-        auto color = fc::Player::Pool[player_ranking[0]].GetPlayerColor();
+        fc::Player* player = &fc::Player::Pool[player_ranking[0]];
+        auto color = player->GetPlayerColor();
+        std::string text_content = " 1st: ";
+
         player_rk->setColor(Color3B(std::get<0>(color), std::get<1>(color), std::get<2>(color)));
-        player_rk->setString(std::string(" 1st: ") + fc::Player::Pool[player_ranking[0]].GetPlayerName());
+        text_content += player->HasRanking() ? player->GetPlayerName() : "None";
+        player_rk->setString(text_content);
 
         player_rk = static_cast<Text*>(Helper::seekWidgetByName(m_pHelloLayout, "Label_Ranking_2"));
-        color = fc::Player::Pool[player_ranking[1]].GetPlayerColor();
+        player = &fc::Player::Pool[player_ranking[1]];
+        color = player->GetPlayerColor();
+        text_content = " 2nd: ";
         player_rk->setColor(Color3B(std::get<0>(color), std::get<1>(color), std::get<2>(color)));
-        player_rk->setString(std::string(" 2nd: ") + fc::Player::Pool[player_ranking[1]].GetPlayerName());
+        text_content += player->HasRanking() ? player->GetPlayerName() : "None";
+        player_rk->setString(text_content);
 
         player_rk = static_cast<Text*>(Helper::seekWidgetByName(m_pHelloLayout, "Label_Ranking_3"));
-        color = fc::Player::Pool[player_ranking[2]].GetPlayerColor();
+        player = &fc::Player::Pool[player_ranking[2]];
+        color = player->GetPlayerColor();
+        text_content = " 3rd: ";
         player_rk->setColor(Color3B(std::get<0>(color), std::get<1>(color), std::get<2>(color)));
-        player_rk->setString(std::string(" 3rd: ") + fc::Player::Pool[player_ranking[2]].GetPlayerName());
+        text_content += player->HasRanking() ? player->GetPlayerName() : "None";
+        player_rk->setString(text_content);
     }
 
     scheduleUpdate();

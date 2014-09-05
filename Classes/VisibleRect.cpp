@@ -92,3 +92,42 @@ Point VisibleRect::rightBottom()
     lazyInit();
     return Point(s_visibleRect.origin.x+s_visibleRect.size.width, s_visibleRect.origin.y);
 }
+
+/**
+* @brief fix coordinate and make child node must be in father
+* @param cur current position
+* @param origin origin or global offset
+* @param fsize container size (father node size)
+* @param msize my size (child size)
+* @note cx = scene_fix_coordinate(cx, fox + fs / 2, fs, cs)
+*/
+float scene_fix_coordinate(float cur, float origin, float fsize, float msize) {
+    float range = (msize - fsize) / 2;
+
+    if (range <= 0.0)
+        return origin;
+
+    if (cur < origin - range)
+        return origin - range;
+
+    if (cur > origin + range)
+        return origin + range;
+
+    return cur;
+}
+
+/**
+* @brief fix scale of scene and make sure not smaller than fsize
+* @param scale the scale need be check
+* @param fsize the min size
+* @param msize origin size
+* @note using min(scene_fix_scale(s, fs_x, ms_x), scene_fix_scale(s, fs_y, ms_y))
+*/
+float scene_fix_scale(float scale, float fsize, float msize) {
+    float min_scale = fsize / msize;
+
+    if (scale < min_scale)
+        scale = min_scale;
+
+    return scale;
+}

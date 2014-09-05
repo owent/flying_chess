@@ -587,6 +587,34 @@
               }
             }
           ]
+        },
+        {
+          "__type": "ComGameObjectSurrogate:#EditorCommon.JsonModel",
+          "classname": "CCNode",
+          "name": "exit_dialog",
+          "canedit": true,
+          "objecttag": 10150,
+          "rotation": 0,
+          "scalex": 1,
+          "scaley": 1,
+          "visible": 1,
+          "x": -353,
+          "y": -230,
+          "zorder": 1,
+          "gameobjects": [],
+          "components": [
+            {
+              "__type": "ComGUIAdapterSurrogate:#EditorCommon.JsonModel.Component",
+              "classname": "GUIComponent",
+              "name": "GUIComponent",
+              "file": null,
+              "fileData": {
+                "path": "publish/exit_dialog.ExportJson",
+                "plistFile": "",
+                "resourceType": 0
+              }
+            }
+          ]
         }
       ],
       "components": []

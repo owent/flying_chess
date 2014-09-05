@@ -1,5 +1,6 @@
 #include <assert.h>
 #include <cstdlib>
+#include <ctime>
 #include "cocos2d.h"
 
 #include "Config.h"
@@ -13,6 +14,8 @@
 
 namespace fc {
     Config::Config() {
+        srand(time(NULL));
+
         auto cfg_data = cocos2d::FileUtils::getInstance()->getDataFromFile("XML/StaticData.xml");
 
         tinyxml2::XMLDocument xml_doc;

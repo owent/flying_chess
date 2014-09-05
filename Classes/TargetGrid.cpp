@@ -29,6 +29,6 @@ namespace fc {
 
     void TargetGrid::arrive_event(Plane& plane, Plane* old_plane) {
         plane.GoHome(LGR_WIN, 0.0f);
-        plane.GetPlayer().OnPlaneWin(++ Player::PlaneRanking);
+        plane.GetPlayer().OnPlaneWin();
     }
 }

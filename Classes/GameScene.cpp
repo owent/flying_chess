@@ -1,4 +1,3 @@
-#include <cstdio>
 
 #include "GameScene.h"
 #include "HelloScene.h"
@@ -34,7 +33,7 @@ Scene* GameScene::scene()
     scene->addChild(layer);
 
     // return the scene
-    return TransitionFade::create(1.2f, scene);
+    return TransitionFade::create(0.5f, scene);
     //return scene;
 }
 
@@ -47,20 +46,69 @@ bool GameScene::init()
     {
         return false;
     }
+    m_pGameOverDlgLayout = NULL;
+    m_pTouchBeginClock = 0;
 
     // ui animation root from json
     m_pGameLayout = dynamic_cast<Layout*>(cocostudio::GUIReader::getInstance()->widgetFromJsonFile("publish/game_panel_bk.ExportJson"));
     {
         m_pGameLayout->addTouchEventListener([this](Ref* pSender, Widget::TouchEventType type){
+            auto me = static_cast<Widget*>(pSender);
+            const clock_t action_clock = CLOCKS_PER_SEC / 4; // 250ms
+            float action_distance = 200.0; // 200 logic px
+
             if (Widget::TouchEventType::BEGAN == type) {
-                auto me = static_cast<Widget*>(pSender);
                 this->m_stTouchMoveStartPosition = me->getPosition();
+                this->m_pTouchBeginClock = clock();
+
+                me->getActionManager()->pauseTarget(me);
             } else if (Widget::TouchEventType::MOVED == type) {
-                auto me = static_cast<Widget*>(pSender);
                 auto move_end = me->getTouchMovePosition();
                 auto move_begin = me->getTouchBeganPosition();
-                auto my_pos = this->m_stTouchMoveStartPosition + move_end - move_begin;
-                me->setPosition(my_pos);
+
+                // 移动层
+                if (clock() - this->m_pTouchBeginClock > action_clock) {
+                    auto my_pos = this->m_stTouchMoveStartPosition + move_end - move_begin;
+                    me->setPosition(my_pos);
+                }
+            } else if (Widget::TouchEventType::ENDED == type) {
+                auto move_begin = me->getTouchBeganPosition();
+                auto move_end = me->getTouchEndPosition();
+
+                // 移动层
+                {
+                    bool need_move = false;
+                    me->getActionManager()->removeAllActionsFromTarget(me);
+
+                    auto cur_pos = me->getPosition();
+                    auto father_size = me->getParent()->getContentSize();
+                    auto my_size = me->getContentSize();
+                    auto fix_pos = Vec2(
+                        scene_fix_coordinate(cur_pos.x, father_size.width / 2, father_size.width, my_size.width),
+                        scene_fix_coordinate(cur_pos.y, father_size.height / 2, father_size.height, my_size.height)
+                        );
+
+                    if (std::numeric_limits<float>::epsilon() <= fabs(fix_pos.x - cur_pos.x) || std::numeric_limits<float>::epsilon() <= fabs(fix_pos.y - cur_pos.y)) {
+                        me->runAction(MoveTo::create(.5f, fix_pos));
+                    }
+                } 
+
+                if (move_end.distance(move_begin) >= action_distance && clock() - this->m_pTouchBeginClock < action_clock) { // 手势
+                    EDD d = EDD_UP2DOWN;
+                    if (fabs(move_end.y - move_begin.y) > fabs(move_end.x - move_begin.x)) {
+                        if (move_end.y > move_begin.y)
+                            d = EDD_DOWN2UP;
+                    } else {
+                        if (move_end.x > move_begin.x)
+                            d = EDD_LEFT2RIGHT;
+                        else
+                            d = EDD_RIGHT2LEFT;
+                    }
+                    this->openExitDialog(d);
+                }
+
+            } else if (Widget::TouchEventType::CANCELED == type) {
+                me->getActionManager()->resumeTarget(me);
             }
         });
 
@@ -111,6 +159,7 @@ bool GameScene::init()
     }
 
     // 启动第一个事件
+    fc::Judger::GetInstance().OnReadyToStart();
     fc::Judger::GetInstance().DoNext();
 
     scheduleUpdate();
@@ -134,18 +183,86 @@ void GameScene::updateData() {
 
 void GameScene::onGameOver() {
 
-    auto gameover_dialog = dynamic_cast<Layout*>(cocostudio::GUIReader::getInstance()->widgetFromJsonFile("publish/gameover_dialog.ExportJson"));
+    if (NULL == m_pGameOverDlgLayout) {
+        m_pGameOverDlgLayout = dynamic_cast<Layout*>(cocostudio::GUIReader::getInstance()->widgetFromJsonFile("publish/gameover_dialog.ExportJson"));
+        auto sprite_layer = Sprite::create();
 
-    m_pGameLayout->addChild(gameover_dialog);
-    gameover_dialog->setAnchorPoint(Vec2(0.5, 0.5));
-    gameover_dialog->setPosition(Vec2(m_pGameLayout->getPositionX() / 2.0f, m_pGameLayout->getPositionY() / 2.0f));
+        m_pGameLayout->addChild(sprite_layer);
+        sprite_layer->addChild(m_pGameOverDlgLayout);
 
-    Button* ok_button = static_cast<Button*>(Helper::seekWidgetByName(gameover_dialog, "Button_GameOver"));
+        m_pGameOverDlgLayout->setAnchorPoint(Vec2(0.5, 0.5));
+        m_pGameOverDlgLayout->setPosition(m_pGameLayout->getContentSize() / 2.0f);
 
-    ok_button->addTouchEventListener([](Ref* pSender, Widget::TouchEventType type){
+        Button* ok_button = static_cast<Button*>(Helper::seekWidgetByName(m_pGameOverDlgLayout, "Button_GameOver"));
+
+        ok_button->addTouchEventListener([](Ref* pSender, Widget::TouchEventType type){
+            if (type == Widget::TouchEventType::ENDED) {
+                Director::getInstance()->replaceScene(HelloScene::scene());
+            }
+        });
+
+        m_pGameOverDlgLayout->setScale(0.01f);
+        m_pGameOverDlgLayout->runAction(ScaleTo::create(0.5f, 1.0));
+    }
+}
+
+void GameScene::openExitDialog(EDD d) {
+
+    auto exit_dlg = dynamic_cast<Layout*>(cocostudio::GUIReader::getInstance()->widgetFromJsonFile("publish/exit_dialog.ExportJson"));
+    auto sprite_layer = Sprite::create();
+
+    m_pGameLayout->addChild(sprite_layer);
+    sprite_layer->addChild(exit_dlg);
+
+    exit_dlg->setAnchorPoint(Vec2(0.5, 0.5));
+    auto place_pos = Vec2(m_pGameLayout->getContentSize() / 2.0f);
+
+    Vec2 begin_pos, end_pos;
+    switch (d){
+    case EDD_UP2DOWN:
+        begin_pos = place_pos + Vec2(0.0f, m_pGameLayout->getContentSize().height);
+        end_pos = place_pos - Vec2(0.0f, m_pGameLayout->getContentSize().height);
+        break;
+    case EDD_DOWN2UP:
+        begin_pos = place_pos - Vec2(0.0f, m_pGameLayout->getContentSize().height);
+        end_pos = place_pos + Vec2(0.0f, m_pGameLayout->getContentSize().height);
+        break;
+    case EDD_LEFT2RIGHT:
+        begin_pos = place_pos - Vec2(m_pGameLayout->getContentSize().width, 0.0f);
+        end_pos = place_pos + Vec2(m_pGameLayout->getContentSize().width, 0.0f);
+        break;
+    case EDD_RIGHT2LEFT:
+        begin_pos = place_pos + Vec2(m_pGameLayout->getContentSize().width, 0.0f);
+        end_pos = place_pos - Vec2(m_pGameLayout->getContentSize().width, 0.0f);
+        break;
+    }
+
+    Button* yes_button = dynamic_cast<Button*>(Helper::seekWidgetByName(exit_dlg, "Button_YES"));
+    Button* no_button = dynamic_cast<Button*>(Helper::seekWidgetByName(exit_dlg, "Button_NO"));
+
+    yes_button->addTouchEventListener([](Ref* pSender, Widget::TouchEventType type){
         if (type == Widget::TouchEventType::ENDED) {
             Director::getInstance()->replaceScene(HelloScene::scene());
         }
     });
 
+    no_button->addTouchEventListener([end_pos, exit_dlg](Ref* pSender, Widget::TouchEventType type){
+        if (type == Widget::TouchEventType::ENDED) {
+            exit_dlg->runAction(Sequence::create(
+                Spawn::create(
+                    MoveTo::create(0.3f, end_pos), 
+                    FadeTo::create(0.3f, 0),
+                    NULL
+                ),
+                CallFunc::create([pSender, exit_dlg](){
+                    exit_dlg->getParent()->removeChild(exit_dlg, true);
+                }),
+                NULL
+            ));
+        }
+    });
+
+    exit_dlg->setPosition(begin_pos);
+    exit_dlg->setOpacity(0);
+    exit_dlg->runAction(Spawn::create(MoveTo::create(0.3f, place_pos), FadeTo::create(0.3f, 255), NULL));
 }

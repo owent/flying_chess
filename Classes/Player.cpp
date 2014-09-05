@@ -11,10 +11,16 @@ namespace fc {
     int Player::PlaneRanking = 0;
 
     void Player::ResetAll(PlayerSelecter sel[EPC_MAX], int plane_count) {
+        for (int i = 0; i < EPC_MAX; ++i) {
+            Pool[i].Reset(sel[i], plane_count);
+        }
+    }
+
+    void Player::OnReadyToStart() {
         PlaneRanking = 0;
 
         for (int i = 0; i < EPC_MAX; ++i) {
-            Pool[i].Reset(sel[i], plane_count);
+            Pool[i].ranking = std::numeric_limits<int>::max();
         }
     }
 
@@ -51,30 +57,32 @@ namespace fc {
     }
 
     bool Player::IsAvailable() const {
-        for (int i = 0; i < EP_MAX; ++i) {
-            if (planes[i].IsAvailable())
-                return true;
-        }
-
-        return false;
+        return PS_DISABLE != status;
     }
 
     bool Player::IsGameOver() const {
-        return !IsAvailable() || ranking < std::numeric_limits<int>::max();
+        return !IsAvailable() || HasRanking();
     };
 
-    void Player::OnPlaneWin(int plane_ranking) {
-        bool win = true;
+    bool Player::HasRanking() const {
+        return ranking < std::numeric_limits<int>::max();
+    }
+
+    void Player::OnPlaneWin() {
+        if (!IsAvailable())
+            return;
+
         for (int i = 0; i < EP_MAX; ++i) {
-            if (!planes[i].IsWin()) {
-                win = false;
-                break;
-            }
+            if (planes[i].IsAvailable())
+                return;
         }
 
-        if (win) {
-            ranking = plane_ranking;
-        }
+        ranking = ++PlaneRanking;
+    }
+
+    void Player::OnGameOver() {
+        if (IsAvailable() && !HasRanking())
+            ranking = ++PlaneRanking;
     }
 
     const char* Player::GetPlayerName() const {

@@ -9,7 +9,10 @@
   "dataScale": 1,
   "designHeight": 35,
   "designWidth": 35,
-  "textures": [],
+  "textures": [
+    "game_panel0.plist",
+    "game_panel1.plist"
+  ],
   "texturesPng": [],
   "version": "1.6.0.0",
   "widgetTree": {

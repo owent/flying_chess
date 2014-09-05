@@ -41,6 +41,10 @@ namespace fc {
         events.clear();
     }
 
+    void Judger::OnReadyToStart() {
+        Player::OnReadyToStart();
+    }
+
     bool Judger::OnRollPointBegin() {
         if (events.empty() || events.front().status != JS_ROLL_POINTS) {
             return false;
@@ -134,13 +138,31 @@ namespace fc {
         return events.front().player;
     }
 
+    void Judger::CheckGameOver() {
+        int available_num = 0;
+        for (int i = 0; i < EPC_MAX; ++i) {
+            if (Player::Pool[i].IsGameOver())
+                continue;
+
+            ++available_num;
+        }
+
+        if (available_num > 1) {
+            return;
+        }
+
+        gameover();
+    }
+
     void Judger::next_action() {
         if (events.empty())
             next_player();
 
         // game over
-        if (events.empty())
+        if (events.empty()) {
+            CheckGameOver();
             return;
+        }
 
         if (JS_ROLL_POINTS == events.front().status)
             RollPoints::GetInstance().OnUpdate();
@@ -161,8 +183,6 @@ namespace fc {
             int plane_score[EP_MAX] = {0}, sel_index = 0;
             for (int i = 0; i < EP_MAX; ++i) {
                 Plane& plane = Player::Pool[evt.player][i];
-                if (!plane.IsAvailable() || plane.IsWin())
-                    continue;
 
                 int rdn = rand() & 0xFF;
                 do {
@@ -182,7 +202,7 @@ namespace fc {
                     // Æô¶¯µÃ·Ö
                     if (!plane.IsStarted() && 6 == cache_points) {
                         plane_score[i] = Config::GetInstance().AICfg.Start;
-                        plane_score[i] += grid->GetScore(plane.Color(), 1, plane.GetLeftJump(), plane.GetLeftFly());
+                        plane_score[i] += grid->GetScore(plane.Color(), 1, 0, 0);
                         break;
                     }
 
@@ -194,34 +214,41 @@ namespace fc {
 
                     plane_score[i] = std::numeric_limits<int>::min();
                 } while (false);
-                if (plane_score[i])
+
+                if (plane_score[i] != std::numeric_limits<int>::min())
                     plane_score[i] = (plane_score[i] << 8) | rdn;
 
                 if (plane_score[i] > plane_score[sel_index])
                     sel_index = i;
             }
 
-            OnSelectPlane(Player::Pool[evt.player][sel_index]);
+            if (false == OnSelectPlane(Player::Pool[evt.player][sel_index])) {
+                cocos2d::log("[ERROR]: AI select player %d plane %d but failed.", evt.player, sel_index);
+                for (int i = 0; i < EP_MAX; ++i) {
+                    cocos2d::log("[ERROR]:  -- plane %d , start %s, win %s, available %s, score %d.", 
+                        i, 
+                        Player::Pool[evt.player][i].IsStarted() ? "Yes" : "No",
+                        Player::Pool[evt.player][i].IsWin()? "Yes": "No",
+                        Player::Pool[evt.player][i].IsAvailable() ? "Yes" : "No",
+                        plane_score[i]
+                    );
+                }
+            }
         }
     }
 
     void Judger::next_player() {
         int player_index = (cache_action.player + 1) % EPC_MAX;
-        int available_num = 0, select_index = EPC_MAX;
+        int select_index = EPC_MAX;
         for (int i = 0; i < EPC_MAX; ++i, player_index = (player_index + 1) % EPC_MAX) {
-            if (!Player::Pool[player_index].IsAvailable())
-                continue;
-
             if (Player::Pool[player_index].IsGameOver())
                 continue;
 
-            if (0 == available_num)
-                select_index = player_index;
-            ++available_num;
+            select_index = player_index;
+            break;
         }
 
-        if (select_index >= EPC_MAX || available_num < 1) {
-            gameover();
+        if (select_index >= EPC_MAX) {
             return;
         }
 
@@ -229,9 +256,17 @@ namespace fc {
     }
 
     void Judger::gameover() {
-        cocos2d::log("gameover");
-        GameScene* game_scene = dynamic_cast<GameScene*>(cocos2d::Director::getInstance()->getRunningScene());
-        if (NULL != game_scene)
-            game_scene->onGameOver();
+        cocos2d::log("!!gameover!!");
+        for (int i = 0; i < EPC_MAX; ++i) {
+            Player::Pool[i].OnGameOver();
+        }
+
+        auto scene = cocos2d::Director::getInstance()->getRunningScene();
+        
+        GameScene* game_scene_layer = dynamic_cast<GameScene*>(scene->getChildren().at(scene->getChildrenCount() - 1));
+        if (NULL != game_scene_layer)
+            game_scene_layer->onGameOver();
+        else
+            cocos2d::log("[ERROR]: gameover but gamescene layer error.");
     }
 }

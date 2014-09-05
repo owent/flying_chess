@@ -20,10 +20,14 @@ namespace fc {
 
         bool IsGameOver() const;
 
+        bool HasRanking() const;
+
         /**
         * @brief 该玩家有飞机到达终点
         */
-        void OnPlaneWin(int plane_ranking);
+        void OnPlaneWin();
+
+        void OnGameOver();
 
         const char* GetPlayerName() const;
 
@@ -56,6 +60,7 @@ namespace fc {
         static int PlaneRanking;
 
         static void ResetAll(PlayerSelecter sel[EPC_MAX], int plane_count);
+        static void OnReadyToStart();
 
         static void SortByRanking(EnPlayerColor sel[EPC_MAX]);
     };

@@ -15,6 +15,7 @@
     <string>plane_color_3.json</string>
     <string>roll_points_panel.json</string>
     <string>gameover_dialog.json</string>
+    <string>exit_dialog.json</string>
   </JsonList>
   <CanvasSize>
     <Width>320</Width>
@@ -27,24 +28,7 @@
     <string>game_panel0.plist</string>
     <string>game_panel1.plist</string>
   </imageFileList>
-  <imagePngList>
-    <string>game_panel0.png</string>
-    <string>game_panel1.png</string>
-    <string>game_panel0.png</string>
-    <string>game_panel1.png</string>
-    <string>game_panel0.png</string>
-    <string>game_panel1.png</string>
-    <string>game_panel0.png</string>
-    <string>game_panel1.png</string>
-    <string>game_panel0.png</string>
-    <string>game_panel1.png</string>
-    <string>game_panel0.png</string>
-    <string>game_panel1.png</string>
-    <string>game_panel0.png</string>
-    <string>game_panel1.png</string>
-    <string>game_panel0.png</string>
-    <string>game_panel1.png</string>
-  </imagePngList>
+  <imagePngList />
   <JsonSuffix>.json</JsonSuffix>
   <CurrentUIJson>hello_panel.json</CurrentUIJson>
 </UIProject>

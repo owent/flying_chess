@@ -1,6 +1,9 @@
 #ifndef __GAME_SCENE_H__
 #define __GAME_SCENE_H__
 
+#include <ctime>
+#include <cstdlib>
+
 #include "cocos2d.h"
 #include "cocos-ext.h"
 #include "cocostudio/CocoStudio.h"
@@ -30,9 +33,22 @@ public:
     void updateData();
 
     void onGameOver();
+
+
+    enum EDD {
+        EDD_UP2DOWN = 0,
+        EDD_DOWN2UP,
+        EDD_LEFT2RIGHT,
+        EDD_RIGHT2LEFT,
+    };
+
+    void openExitDialog(EDD d);
 private:
     ui::Layout* m_pGameLayout;
     Vec2 m_stTouchMoveStartPosition;
+    ui::Layout* m_pGameOverDlgLayout;
+
+    clock_t m_pTouchBeginClock;
 };
 
 #endif // __HELLOWORLD_SCENE_H__
