@@ -11,11 +11,11 @@ using namespace CocosDenshion;
 
 // android effect only support ogg  
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)  
-#define MAKE_EFFECT_FILE(x)        x##".ogg"
+#define MAKE_EFFECT_FILE(x)        x ".ogg"
 #elif( CC_TARGET_PLATFORM == CC_PLATFORM_IOS)  
-#define MAKE_EFFECT_FILE(x)        x##".mp3"
+#define MAKE_EFFECT_FILE(x)        x ".mp3"
 #else  
-#define MAKE_EFFECT_FILE(x)        x##".wav"
+#define MAKE_EFFECT_FILE(x)        x ".wav"
 #endif // CC_PLATFORM_ANDROID  
 
 namespace fc {

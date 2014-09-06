@@ -2,7 +2,7 @@
 #define __HELLO_SCENE_H__
 
 #include "cocos2d.h"
-#include "cocos-ext.h"
+#include "extensions/cocos-ext.h"
 #include "cocostudio/CocoStudio.h"
 #include "ui/UILayout.h"
 

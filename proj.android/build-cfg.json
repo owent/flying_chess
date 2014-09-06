@@ -2,7 +2,9 @@
     "ndk_module_path" :[
         "../cocos2d",
         "../cocos2d/cocos",
-        "../cocos2d/external"
+        "../cocos2d/external",
+        "../cocos2d/cocos/editor-support/cocostudio",
+        "../cocos2d/extensions"
     ],
     "copy_resources": [
         {

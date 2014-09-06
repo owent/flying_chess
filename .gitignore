@@ -25,7 +25,11 @@ proj.win32/Debug.win32
 proj.win32/Release.win32
 proj.win32/*.sdf
 proj.win32/*.opensdf
+proj.win32/*.suo
 
 # build cache - ant & ndk
+proj.android/assets
+proj.android/bin
+proj.android/obj
 
 # build cache - ios
