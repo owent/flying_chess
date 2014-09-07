@@ -118,6 +118,17 @@ def copy_resources(app_android_root):
     if os.path.isdir(resources_dir):
         copy_files(resources_dir, assets_dir)
 
+def flying_chess_rm_sounds(path):
+    print( 'removing sounds of dir => ' + path)
+    for item in os.listdir(path):
+    	item_path = path + '/' + item
+        if not item.startswith('.') and not item.endswith('.ogg') and os.path.isfile(item_path):
+            os.unlink(item_path)
+        elif os.path.isdir(item_path):
+            flying_chess_rm_sounds(item)
+    
+    pass
+
 def build(ndk_build_param,android_platform,build_mode):
 
     ndk_root = check_environment_variables()
@@ -129,7 +140,9 @@ def build(ndk_build_param,android_platform,build_mode):
 
     app_android_root = current_dir
     copy_resources(app_android_root)
-    # flying chess
+    
+    # flying chess -- only keep .ogg sound source
+    flying_chess_rm_sounds(app_android_root + '/assets/Sound')
     
     if android_platform is not None:
 				sdk_root = check_environment_variables_sdk()
