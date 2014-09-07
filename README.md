@@ -22,3 +22,11 @@ flying chess written with cocos2d-x 3.X
 ./download-deps.py
 
 ```
+
+“—  ≈‰…Ë±∏
+------
++ Win32
++ Android Arm
++ Mac
++ IOS(Iphone)
++ IOS(Ipad)
