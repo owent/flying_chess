@@ -18,10 +18,6 @@
 		1AC6FB31180E99EB004C840B /* libcocos2dx-extensions iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FB09180E9839004C840B /* libcocos2dx-extensions iOS.a */; };
 		1AC6FB32180E99EB004C840B /* libCocosDenshion iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FB0F180E9839004C840B /* libCocosDenshion iOS.a */; };
 		1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */; };
-		1AFAF8B816D35DE700DB1158 /* HelloWorldScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AFAF8B516D35DE700DB1158 /* HelloWorldScene.cpp */; };
-		1AFAF8BC16D35E4900DB1158 /* CloseNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AFAF8B916D35E4900DB1158 /* CloseNormal.png */; };
-		1AFAF8BD16D35E4900DB1158 /* CloseSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AFAF8BA16D35E4900DB1158 /* CloseSelected.png */; };
-		1AFAF8BE16D35E4900DB1158 /* HelloWorld.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AFAF8BB16D35E4900DB1158 /* HelloWorld.png */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
@@ -32,11 +28,7 @@
 		503AE10517EB98FF00D1A890 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 503AE10317EB98FF00D1A890 /* main.cpp */; };
 		503AE11217EB99EE00D1A890 /* libcurl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 503AE11117EB99EE00D1A890 /* libcurl.dylib */; };
 		503AE11B17EB9C5A00D1A890 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 503AE11A17EB9C5A00D1A890 /* IOKit.framework */; };
-		5087E75317EB910900C73F5D /* CloseNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AFAF8B916D35E4900DB1158 /* CloseNormal.png */; };
-		5087E75417EB910900C73F5D /* CloseSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AFAF8BA16D35E4900DB1158 /* CloseSelected.png */; };
-		5087E75517EB910900C73F5D /* HelloWorld.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AFAF8BB16D35E4900DB1158 /* HelloWorld.png */; };
 		5087E75717EB910900C73F5D /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */; };
-		5087E75817EB910900C73F5D /* HelloWorldScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AFAF8B516D35DE700DB1158 /* HelloWorldScene.cpp */; };
 		5087E76317EB910900C73F5D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		5087E76517EB910900C73F5D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		5087E76717EB910900C73F5D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
@@ -69,6 +61,44 @@
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
 		D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B0611A1803AB670077942B /* CoreMotion.framework */; };
+		EA2E4C9C19BB213D009D69A8 /* AlterGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2E4C7719BB213D009D69A8 /* AlterGrid.cpp */; };
+		EA2E4C9D19BB213D009D69A8 /* Config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2E4C7919BB213D009D69A8 /* Config.cpp */; };
+		EA2E4C9E19BB213D009D69A8 /* FlyGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2E4C7B19BB213D009D69A8 /* FlyGrid.cpp */; };
+		EA2E4C9F19BB213D009D69A8 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2E4C7D19BB213D009D69A8 /* GameScene.cpp */; };
+		EA2E4CA019BB213D009D69A8 /* Grid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2E4C7F19BB213D009D69A8 /* Grid.cpp */; };
+		EA2E4CA119BB213D009D69A8 /* HelloScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2E4C8119BB213D009D69A8 /* HelloScene.cpp */; };
+		EA2E4CA319BB213D009D69A8 /* Judger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2E4C8519BB213D009D69A8 /* Judger.cpp */; };
+		EA2E4CA419BB213D009D69A8 /* Plane.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2E4C8919BB213D009D69A8 /* Plane.cpp */; };
+		EA2E4CA519BB213D009D69A8 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2E4C8B19BB213D009D69A8 /* Player.cpp */; };
+		EA2E4CA619BB213D009D69A8 /* RollPoints.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2E4C8D19BB213D009D69A8 /* RollPoints.cpp */; };
+		EA2E4CA719BB213D009D69A8 /* SoundMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2E4C9019BB213D009D69A8 /* SoundMgr.cpp */; };
+		EA2E4CA819BB213D009D69A8 /* StraightGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2E4C9219BB213D009D69A8 /* StraightGrid.cpp */; };
+		EA2E4CA919BB213D009D69A8 /* TargetGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2E4C9419BB213D009D69A8 /* TargetGrid.cpp */; };
+		EA2E4CAC19BB213D009D69A8 /* VisibleRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2E4C9A19BB213D009D69A8 /* VisibleRect.cpp */; };
+		EA2E4D2819BC1228009D69A8 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = EA2E4D2319BC1228009D69A8 /* fonts */; };
+		EA2E4D2919BC1228009D69A8 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = EA2E4D2319BC1228009D69A8 /* fonts */; };
+		EA2E4D2A19BC1228009D69A8 /* Images in Resources */ = {isa = PBXBuildFile; fileRef = EA2E4D2419BC1228009D69A8 /* Images */; };
+		EA2E4D2B19BC1228009D69A8 /* Images in Resources */ = {isa = PBXBuildFile; fileRef = EA2E4D2419BC1228009D69A8 /* Images */; };
+		EA2E4D2C19BC1228009D69A8 /* publish in Resources */ = {isa = PBXBuildFile; fileRef = EA2E4D2519BC1228009D69A8 /* publish */; };
+		EA2E4D2D19BC1228009D69A8 /* publish in Resources */ = {isa = PBXBuildFile; fileRef = EA2E4D2519BC1228009D69A8 /* publish */; };
+		EA2E4D3019BC1228009D69A8 /* XML in Resources */ = {isa = PBXBuildFile; fileRef = EA2E4D2719BC1228009D69A8 /* XML */; };
+		EA2E4D3119BC1228009D69A8 /* XML in Resources */ = {isa = PBXBuildFile; fileRef = EA2E4D2719BC1228009D69A8 /* XML */; };
+		EA2E4D4619BC144C009D69A8 /* Sound in Resources */ = {isa = PBXBuildFile; fileRef = EA2E4D4519BC144C009D69A8 /* Sound */; };
+		EA2E4D4719BC144C009D69A8 /* Sound in Resources */ = {isa = PBXBuildFile; fileRef = EA2E4D4519BC144C009D69A8 /* Sound */; };
+		EA2E4D4A19BC16D4009D69A8 /* AlterGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2E4C7719BB213D009D69A8 /* AlterGrid.cpp */; };
+		EA2E4D4B19BC16DE009D69A8 /* Config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2E4C7919BB213D009D69A8 /* Config.cpp */; };
+		EA2E4D4C19BC16E2009D69A8 /* FlyGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2E4C7B19BB213D009D69A8 /* FlyGrid.cpp */; };
+		EA2E4D4D19BC16E6009D69A8 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2E4C7D19BB213D009D69A8 /* GameScene.cpp */; };
+		EA2E4D4E19BC16F1009D69A8 /* Grid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2E4C7F19BB213D009D69A8 /* Grid.cpp */; };
+		EA2E4D4F19BC16F5009D69A8 /* HelloScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2E4C8119BB213D009D69A8 /* HelloScene.cpp */; };
+		EA2E4D5019BC1703009D69A8 /* Judger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2E4C8519BB213D009D69A8 /* Judger.cpp */; };
+		EA2E4D5119BC1703009D69A8 /* Plane.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2E4C8919BB213D009D69A8 /* Plane.cpp */; };
+		EA2E4D5219BC1703009D69A8 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2E4C8B19BB213D009D69A8 /* Player.cpp */; };
+		EA2E4D5319BC1703009D69A8 /* RollPoints.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2E4C8D19BB213D009D69A8 /* RollPoints.cpp */; };
+		EA2E4D5419BC1703009D69A8 /* SoundMgr.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2E4C9019BB213D009D69A8 /* SoundMgr.cpp */; };
+		EA2E4D5519BC1703009D69A8 /* StraightGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2E4C9219BB213D009D69A8 /* StraightGrid.cpp */; };
+		EA2E4D5619BC1703009D69A8 /* TargetGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2E4C9419BB213D009D69A8 /* TargetGrid.cpp */; };
+		EA2E4D5719BC1703009D69A8 /* VisibleRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA2E4C9A19BB213D009D69A8 /* VisibleRect.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,20 +137,6 @@
 			remoteGlobalIDString = A03F2ED617814268006731B9;
 			remoteInfo = "CocosDenshion Mac";
 		};
-		1AC6FB02180E9839004C840B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A03F31FD1781479B006731B9;
-			remoteInfo = "jsbindings Mac";
-		};
-		1AC6FB04180E9839004C840B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1A6FB53017854BC300CDF010;
-			remoteInfo = "luabindings Mac";
-		};
 		1AC6FB06180E9839004C840B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */;
@@ -155,20 +171,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = A07A4FB4178387730073F6A7;
 			remoteInfo = "CocosDenshion iOS";
-		};
-		1AC6FB10180E9839004C840B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A07A5030178387750073F6A7;
-			remoteInfo = "jsbindings iOS";
-		};
-		1AC6FB12180E9839004C840B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1A119791178526AA00D62A44;
-			remoteInfo = "luabindings iOS";
 		};
 		1AC6FB15180E9959004C840B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -247,11 +249,6 @@
 		1ACB3243164770DE00914215 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../../cocos2dx/platform/third_party/ios/libraries/libcurl.a; sourceTree = "<group>"; };
 		1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AppDelegate.cpp; path = ../Classes/AppDelegate.cpp; sourceTree = "<group>"; };
 		1AFAF8B416D35DE700DB1158 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../Classes/AppDelegate.h; sourceTree = "<group>"; };
-		1AFAF8B516D35DE700DB1158 /* HelloWorldScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HelloWorldScene.cpp; path = ../Classes/HelloWorldScene.cpp; sourceTree = "<group>"; };
-		1AFAF8B616D35DE700DB1158 /* HelloWorldScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HelloWorldScene.h; path = ../Classes/HelloWorldScene.h; sourceTree = "<group>"; };
-		1AFAF8B916D35E4900DB1158 /* CloseNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseNormal.png; sourceTree = "<group>"; };
-		1AFAF8BA16D35E4900DB1158 /* CloseSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseSelected.png; sourceTree = "<group>"; };
-		1AFAF8BB16D35E4900DB1158 /* HelloWorld.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelloWorld.png; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* flying_chess iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "flying_chess iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -295,6 +292,42 @@
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D6B0611A1803AB670077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
+		EA2E4C7719BB213D009D69A8 /* AlterGrid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AlterGrid.cpp; path = ../Classes/AlterGrid.cpp; sourceTree = "<group>"; };
+		EA2E4C7819BB213D009D69A8 /* AlterGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlterGrid.h; path = ../Classes/AlterGrid.h; sourceTree = "<group>"; };
+		EA2E4C7919BB213D009D69A8 /* Config.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Config.cpp; path = ../Classes/Config.cpp; sourceTree = "<group>"; };
+		EA2E4C7A19BB213D009D69A8 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Config.h; path = ../Classes/Config.h; sourceTree = "<group>"; };
+		EA2E4C7B19BB213D009D69A8 /* FlyGrid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FlyGrid.cpp; path = ../Classes/FlyGrid.cpp; sourceTree = "<group>"; };
+		EA2E4C7C19BB213D009D69A8 /* FlyGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlyGrid.h; path = ../Classes/FlyGrid.h; sourceTree = "<group>"; };
+		EA2E4C7D19BB213D009D69A8 /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameScene.cpp; path = ../Classes/GameScene.cpp; sourceTree = "<group>"; };
+		EA2E4C7E19BB213D009D69A8 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameScene.h; path = ../Classes/GameScene.h; sourceTree = "<group>"; };
+		EA2E4C7F19BB213D009D69A8 /* Grid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Grid.cpp; path = ../Classes/Grid.cpp; sourceTree = "<group>"; };
+		EA2E4C8019BB213D009D69A8 /* Grid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Grid.h; path = ../Classes/Grid.h; sourceTree = "<group>"; };
+		EA2E4C8119BB213D009D69A8 /* HelloScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HelloScene.cpp; path = ../Classes/HelloScene.cpp; sourceTree = "<group>"; };
+		EA2E4C8219BB213D009D69A8 /* HelloScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HelloScene.h; path = ../Classes/HelloScene.h; sourceTree = "<group>"; };
+		EA2E4C8519BB213D009D69A8 /* Judger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Judger.cpp; path = ../Classes/Judger.cpp; sourceTree = "<group>"; };
+		EA2E4C8619BB213D009D69A8 /* Judger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Judger.h; path = ../Classes/Judger.h; sourceTree = "<group>"; };
+		EA2E4C8719BB213D009D69A8 /* Macro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Macro.h; path = ../Classes/Macro.h; sourceTree = "<group>"; };
+		EA2E4C8819BB213D009D69A8 /* Noncopyable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Noncopyable.h; path = ../Classes/Noncopyable.h; sourceTree = "<group>"; };
+		EA2E4C8919BB213D009D69A8 /* Plane.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Plane.cpp; path = ../Classes/Plane.cpp; sourceTree = "<group>"; };
+		EA2E4C8A19BB213D009D69A8 /* Plane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Plane.h; path = ../Classes/Plane.h; sourceTree = "<group>"; };
+		EA2E4C8B19BB213D009D69A8 /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Player.cpp; path = ../Classes/Player.cpp; sourceTree = "<group>"; };
+		EA2E4C8C19BB213D009D69A8 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Player.h; path = ../Classes/Player.h; sourceTree = "<group>"; };
+		EA2E4C8D19BB213D009D69A8 /* RollPoints.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RollPoints.cpp; path = ../Classes/RollPoints.cpp; sourceTree = "<group>"; };
+		EA2E4C8E19BB213D009D69A8 /* RollPoints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RollPoints.h; path = ../Classes/RollPoints.h; sourceTree = "<group>"; };
+		EA2E4C8F19BB213D009D69A8 /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Singleton.h; path = ../Classes/Singleton.h; sourceTree = "<group>"; };
+		EA2E4C9019BB213D009D69A8 /* SoundMgr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SoundMgr.cpp; path = ../Classes/SoundMgr.cpp; sourceTree = "<group>"; };
+		EA2E4C9119BB213D009D69A8 /* SoundMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SoundMgr.h; path = ../Classes/SoundMgr.h; sourceTree = "<group>"; };
+		EA2E4C9219BB213D009D69A8 /* StraightGrid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StraightGrid.cpp; path = ../Classes/StraightGrid.cpp; sourceTree = "<group>"; };
+		EA2E4C9319BB213D009D69A8 /* StraightGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StraightGrid.h; path = ../Classes/StraightGrid.h; sourceTree = "<group>"; };
+		EA2E4C9419BB213D009D69A8 /* TargetGrid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TargetGrid.cpp; path = ../Classes/TargetGrid.cpp; sourceTree = "<group>"; };
+		EA2E4C9519BB213D009D69A8 /* TargetGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TargetGrid.h; path = ../Classes/TargetGrid.h; sourceTree = "<group>"; };
+		EA2E4C9A19BB213D009D69A8 /* VisibleRect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VisibleRect.cpp; path = ../Classes/VisibleRect.cpp; sourceTree = "<group>"; };
+		EA2E4C9B19BB213D009D69A8 /* VisibleRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VisibleRect.h; path = ../Classes/VisibleRect.h; sourceTree = "<group>"; };
+		EA2E4D2319BC1228009D69A8 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
+		EA2E4D2419BC1228009D69A8 /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images; sourceTree = "<group>"; };
+		EA2E4D2519BC1228009D69A8 /* publish */ = {isa = PBXFileReference; lastKnownFileType = folder; path = publish; sourceTree = "<group>"; };
+		EA2E4D2719BC1228009D69A8 /* XML */ = {isa = PBXFileReference; lastKnownFileType = folder; path = XML; sourceTree = "<group>"; };
+		EA2E4D4519BC144C009D69A8 /* Sound */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sound; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -364,10 +397,39 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				EA2E4C7719BB213D009D69A8 /* AlterGrid.cpp */,
+				EA2E4C7819BB213D009D69A8 /* AlterGrid.h */,
+				EA2E4C7919BB213D009D69A8 /* Config.cpp */,
+				EA2E4C7A19BB213D009D69A8 /* Config.h */,
+				EA2E4C7B19BB213D009D69A8 /* FlyGrid.cpp */,
+				EA2E4C7C19BB213D009D69A8 /* FlyGrid.h */,
+				EA2E4C7D19BB213D009D69A8 /* GameScene.cpp */,
+				EA2E4C7E19BB213D009D69A8 /* GameScene.h */,
+				EA2E4C7F19BB213D009D69A8 /* Grid.cpp */,
+				EA2E4C8019BB213D009D69A8 /* Grid.h */,
+				EA2E4C8119BB213D009D69A8 /* HelloScene.cpp */,
+				EA2E4C8219BB213D009D69A8 /* HelloScene.h */,
+				EA2E4C8519BB213D009D69A8 /* Judger.cpp */,
+				EA2E4C8619BB213D009D69A8 /* Judger.h */,
+				EA2E4C8719BB213D009D69A8 /* Macro.h */,
+				EA2E4C8819BB213D009D69A8 /* Noncopyable.h */,
+				EA2E4C8919BB213D009D69A8 /* Plane.cpp */,
+				EA2E4C8A19BB213D009D69A8 /* Plane.h */,
+				EA2E4C8B19BB213D009D69A8 /* Player.cpp */,
+				EA2E4C8C19BB213D009D69A8 /* Player.h */,
+				EA2E4C8D19BB213D009D69A8 /* RollPoints.cpp */,
+				EA2E4C8E19BB213D009D69A8 /* RollPoints.h */,
+				EA2E4C8F19BB213D009D69A8 /* Singleton.h */,
+				EA2E4C9019BB213D009D69A8 /* SoundMgr.cpp */,
+				EA2E4C9119BB213D009D69A8 /* SoundMgr.h */,
+				EA2E4C9219BB213D009D69A8 /* StraightGrid.cpp */,
+				EA2E4C9319BB213D009D69A8 /* StraightGrid.h */,
+				EA2E4C9419BB213D009D69A8 /* TargetGrid.cpp */,
+				EA2E4C9519BB213D009D69A8 /* TargetGrid.h */,
+				EA2E4C9A19BB213D009D69A8 /* VisibleRect.cpp */,
+				EA2E4C9B19BB213D009D69A8 /* VisibleRect.h */,
 				1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */,
 				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
-				1AFAF8B516D35DE700DB1158 /* HelloWorldScene.cpp */,
-				1AFAF8B616D35DE700DB1158 /* HelloWorldScene.h */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -390,15 +452,11 @@
 				1AC6FAFD180E9839004C840B /* libchipmunk Mac.a */,
 				1AC6FAFF180E9839004C840B /* libbox2d Mac.a */,
 				1AC6FB01180E9839004C840B /* libCocosDenshion Mac.a */,
-				1AC6FB03180E9839004C840B /* libjsbindings Mac.a */,
-				1AC6FB05180E9839004C840B /* libluabindings Mac.a */,
 				1AC6FB07180E9839004C840B /* libcocos2dx iOS.a */,
 				1AC6FB09180E9839004C840B /* libcocos2dx-extensions iOS.a */,
 				1AC6FB0B180E9839004C840B /* libchipmunk iOS.a */,
 				1AC6FB0D180E9839004C840B /* libbox2d iOS.a */,
 				1AC6FB0F180E9839004C840B /* libCocosDenshion iOS.a */,
-				1AC6FB11180E9839004C840B /* libjsbindings iOS.a */,
-				1AC6FB13180E9839004C840B /* libluabindings iOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -487,9 +545,11 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				1AFAF8B916D35E4900DB1158 /* CloseNormal.png */,
-				1AFAF8BA16D35E4900DB1158 /* CloseSelected.png */,
-				1AFAF8BB16D35E4900DB1158 /* HelloWorld.png */,
+				EA2E4D4519BC144C009D69A8 /* Sound */,
+				EA2E4D2319BC1228009D69A8 /* fonts */,
+				EA2E4D2419BC1228009D69A8 /* Images */,
+				EA2E4D2519BC1228009D69A8 /* publish */,
+				EA2E4D2719BC1228009D69A8 /* XML */,
 			);
 			name = Resources;
 			path = ../Resources;
@@ -617,20 +677,6 @@
 			remoteRef = 1AC6FB00180E9839004C840B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		1AC6FB03180E9839004C840B /* libjsbindings Mac.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libjsbindings Mac.a";
-			remoteRef = 1AC6FB02180E9839004C840B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1AC6FB05180E9839004C840B /* libluabindings Mac.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libluabindings Mac.a";
-			remoteRef = 1AC6FB04180E9839004C840B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		1AC6FB07180E9839004C840B /* libcocos2dx iOS.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -666,20 +712,6 @@
 			remoteRef = 1AC6FB0E180E9839004C840B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		1AC6FB11180E9839004C840B /* libjsbindings iOS.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libjsbindings iOS.a";
-			remoteRef = 1AC6FB10180E9839004C840B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		1AC6FB13180E9839004C840B /* libluabindings iOS.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libluabindings iOS.a";
-			remoteRef = 1AC6FB12180E9839004C840B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -688,22 +720,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
+				EA2E4D3019BC1228009D69A8 /* XML in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
+				EA2E4D2A19BC1228009D69A8 /* Images in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
-				1AFAF8BC16D35E4900DB1158 /* CloseNormal.png in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
-				1AFAF8BD16D35E4900DB1158 /* CloseSelected.png in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
+				EA2E4D2819BC1228009D69A8 /* fonts in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
-				1AFAF8BE16D35E4900DB1158 /* HelloWorld.png in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
+				EA2E4D4619BC144C009D69A8 /* Sound in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
+				EA2E4D2C19BC1228009D69A8 /* publish in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
 			);
@@ -713,10 +747,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5087E75317EB910900C73F5D /* CloseNormal.png in Resources */,
+				EA2E4D4719BC144C009D69A8 /* Sound in Resources */,
+				EA2E4D3119BC1228009D69A8 /* XML in Resources */,
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
-				5087E75417EB910900C73F5D /* CloseSelected.png in Resources */,
-				5087E75517EB910900C73F5D /* HelloWorld.png in Resources */,
+				EA2E4D2B19BC1228009D69A8 /* Images in Resources */,
+				EA2E4D2D19BC1228009D69A8 /* publish in Resources */,
+				EA2E4D2919BC1228009D69A8 /* fonts in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -727,11 +763,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA2E4C9C19BB213D009D69A8 /* AlterGrid.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
+				EA2E4CA619BB213D009D69A8 /* RollPoints.cpp in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
+				EA2E4CAC19BB213D009D69A8 /* VisibleRect.cpp in Sources */,
+				EA2E4C9E19BB213D009D69A8 /* FlyGrid.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
-				1AFAF8B816D35DE700DB1158 /* HelloWorldScene.cpp in Sources */,
+				EA2E4C9F19BB213D009D69A8 /* GameScene.cpp in Sources */,
+				EA2E4C9D19BB213D009D69A8 /* Config.cpp in Sources */,
+				EA2E4CA719BB213D009D69A8 /* SoundMgr.cpp in Sources */,
+				EA2E4CA919BB213D009D69A8 /* TargetGrid.cpp in Sources */,
+				EA2E4CA019BB213D009D69A8 /* Grid.cpp in Sources */,
+				EA2E4CA819BB213D009D69A8 /* StraightGrid.cpp in Sources */,
+				EA2E4CA119BB213D009D69A8 /* HelloScene.cpp in Sources */,
+				EA2E4CA419BB213D009D69A8 /* Plane.cpp in Sources */,
+				EA2E4CA319BB213D009D69A8 /* Judger.cpp in Sources */,
+				EA2E4CA519BB213D009D69A8 /* Player.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -739,9 +788,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA2E4D4A19BC16D4009D69A8 /* AlterGrid.cpp in Sources */,
+				EA2E4D4F19BC16F5009D69A8 /* HelloScene.cpp in Sources */,
+				EA2E4D5119BC1703009D69A8 /* Plane.cpp in Sources */,
+				EA2E4D4B19BC16DE009D69A8 /* Config.cpp in Sources */,
+				EA2E4D5619BC1703009D69A8 /* TargetGrid.cpp in Sources */,
 				5087E75717EB910900C73F5D /* AppDelegate.cpp in Sources */,
-				5087E75817EB910900C73F5D /* HelloWorldScene.cpp in Sources */,
+				EA2E4D5319BC1703009D69A8 /* RollPoints.cpp in Sources */,
+				EA2E4D5419BC1703009D69A8 /* SoundMgr.cpp in Sources */,
+				EA2E4D5219BC1703009D69A8 /* Player.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
+				EA2E4D5519BC1703009D69A8 /* StraightGrid.cpp in Sources */,
+				EA2E4D4D19BC16E6009D69A8 /* GameScene.cpp in Sources */,
+				EA2E4D5719BC1703009D69A8 /* VisibleRect.cpp in Sources */,
+				EA2E4D4E19BC16F1009D69A8 /* Grid.cpp in Sources */,
+				EA2E4D5019BC1703009D69A8 /* Judger.cpp in Sources */,
+				EA2E4D4C19BC16E2009D69A8 /* FlyGrid.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -824,7 +886,7 @@
 					"$(SRCROOT)/../cocos2d/cocos/platform/ios/Simulation",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -853,7 +915,7 @@
 					"$(SRCROOT)/../cocos2d/cocos/platform/ios/Simulation",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";

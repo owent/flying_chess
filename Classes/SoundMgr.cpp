@@ -12,17 +12,20 @@ using namespace CocosDenshion;
 // android effect only support ogg  
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)  
 #define MAKE_EFFECT_FILE(x)        x ".ogg"
-#elif( CC_TARGET_PLATFORM == CC_PLATFORM_IOS)  
-#define MAKE_EFFECT_FILE(x)        x ".mp3"
+#define MAKE_BKM_FILE(x)           x ".mp3"
+#elif( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC)  
+#define MAKE_EFFECT_FILE(x)        x ".m4a"
+#define MAKE_BKM_FILE(x)           x ".m4a"
 #else  
 #define MAKE_EFFECT_FILE(x)        x ".wav"
+#define MAKE_BKM_FILE(x)           x ".wav"
 #endif // CC_PLATFORM_ANDROID  
 
 namespace fc {
 
 
     SoundMgr::SoundMgr(){
-        SimpleAudioEngine::getInstance()->preloadBackgroundMusic("Sound/bgm.mp3");
+        SimpleAudioEngine::getInstance()->preloadBackgroundMusic(MAKE_BKM_FILE("Sound/bgm"));
 
         SimpleAudioEngine::getInstance()->preloadEffect(MAKE_EFFECT_FILE("Sound/GoHome"));
         SimpleAudioEngine::getInstance()->preloadEffect(MAKE_EFFECT_FILE("Sound/Jump"));
@@ -32,7 +35,7 @@ namespace fc {
     }
 
     void SoundMgr::PlayBackground() {
-        SimpleAudioEngine::getInstance()->playBackgroundMusic("Sound/bgm.mp3", true);
+        SimpleAudioEngine::getInstance()->playBackgroundMusic(MAKE_BKM_FILE("Sound/bgm"), true);
     }
 
     void SoundMgr::StopBackground() {

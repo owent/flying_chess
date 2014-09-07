@@ -1,3 +1,5 @@
+#include <cmath>
+#include <algorithm>
 
 #include "GameScene.h"
 #include "HelloScene.h"
@@ -19,7 +21,7 @@ using namespace ui;
 
 Scene* GameScene::scene()
 {
-    // ¿ª¾ÖÊı¾İ³õÊ¼»¯£¨²»Çå¿ÕÅäÖÃ£©
+    // å¼€å±€æ•°æ®åˆå§‹åŒ–ï¼ˆä¸æ¸…ç©ºé…ç½®ï¼‰
     fc::Judger::GetInstance().Reset(false);
 
     // 'scene' is an autorelease object
@@ -50,7 +52,16 @@ bool GameScene::init()
 
     // ui animation root from json
     m_pGameLayout = dynamic_cast<Layout*>(cocostudio::GUIReader::getInstance()->widgetFromJsonFile("publish/game_panel_bk.ExportJson"));
+    m_pGameLayout->setContentSize(Size(600.0f, 600.0f));
     {
+        // åˆå§‹è‡ªé€‚åº”å¤§å°
+        {
+            using std::min;
+            auto father_size = getContentSize();
+            float scale_final = min(father_size.width / m_pGameLayout->getContentSize().width, father_size.height / m_pGameLayout->getContentSize().height);
+            m_pGameLayout->setScale(scale_final);
+        }
+        
         m_pGameLayout->addTouchEventListener([this](Ref* pSender, Widget::TouchEventType type){
             auto me = static_cast<Widget*>(pSender);
             const clock_t action_clock = CLOCKS_PER_SEC / 4; // 250ms
@@ -65,7 +76,7 @@ bool GameScene::init()
                 auto move_end = me->getTouchMovePosition();
                 auto move_begin = me->getTouchBeganPosition();
 
-                // ÒÆ¶¯²ã
+                // ç§»åŠ¨å±‚
                 if (clock() - this->m_pTouchBeginClock > action_clock) {
                     auto my_pos = this->m_stTouchMoveStartPosition + move_end - move_begin;
                     me->setPosition(my_pos);
@@ -74,7 +85,7 @@ bool GameScene::init()
                 auto move_begin = me->getTouchBeganPosition();
                 auto move_end = me->getTouchEndPosition();
 
-                // ÒÆ¶¯²ã
+                // ç§»åŠ¨å±‚
                 {
                     bool need_move = false;
                     me->getActionManager()->removeAllActionsFromTarget(me);
@@ -92,7 +103,7 @@ bool GameScene::init()
                     }
                 } 
 
-                if (move_end.distance(move_begin) >= action_distance && clock() - this->m_pTouchBeginClock < action_clock) { // ÊÖÊÆ
+                if (move_end.distance(move_begin) >= action_distance && clock() - this->m_pTouchBeginClock < action_clock) { // æ‰‹åŠ¿
                     EDD d = EDD_UP2DOWN;
                     if (fabs(move_end.y - move_begin.y) > fabs(move_end.x - move_begin.x)) {
                         if (move_end.y > move_begin.y)
@@ -116,11 +127,18 @@ bool GameScene::init()
         m_pGameLayout->setPosition(Vec2(my_size.width / 2, my_size.height / 2));
     }
     addChild(m_pGameLayout);
+    log("background layer size (%f, %f) position (%f, %f)",
+        m_pGameLayout->getContentSize().width,
+        m_pGameLayout->getContentSize().height,
+        m_pGameLayout->getPositionX(),
+        m_pGameLayout->getPositionY()
+    );
 
-    // ³õÊ¼»¯·ÉĞĞÆå
+    // åˆå§‹åŒ–é£è¡Œæ£‹
     {
         auto chesses_sprite = Sprite::create();
         m_pGameLayout->addChild(chesses_sprite);
+        
 
         for (int i = 0; i < fc::EPC_MAX; ++i) {
             char chess_path[64] = {0};
@@ -148,7 +166,7 @@ bool GameScene::init()
         }
     }
 
-    // ³õÊ¼»¯÷»×Ó
+    // åˆå§‹åŒ–éª°å­
     {
         auto roll_sprite = Sprite::create();
         m_pGameLayout->addChild(roll_sprite);
@@ -157,19 +175,19 @@ bool GameScene::init()
         roll_sprite->addChild(roll);
     }
 
-    // Æô¶¯µÚÒ»¸öÊÂ¼ş
+    // å¯åŠ¨ç¬¬ä¸€ä¸ªäº‹ä»¶
     fc::Judger::GetInstance().OnReadyToStart();
     fc::Judger::GetInstance().DoNext();
 
     scheduleUpdate();
 
-    // ÒôĞ§
+    // éŸ³æ•ˆ
     fc::SoundMgr::GetInstance().PlayBackground();
     return true;
 }
 
 GameScene::~GameScene() {
-    // ÒôĞ§
+    // éŸ³æ•ˆ
     fc::SoundMgr::GetInstance().StopBackground();
 }
 

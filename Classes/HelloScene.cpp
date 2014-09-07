@@ -47,7 +47,16 @@ bool HelloScene::init()
 
     // ui animation root from json
     m_pHelloLayout = dynamic_cast<Layout*>(cocostudio::GUIReader::getInstance()->widgetFromJsonFile("publish/hello_panel.ExportJson"));
+    m_pHelloLayout->setContentSize(Size(600.0f, 600.0f));
     {
+        // åˆå§‹è‡ªé€‚åº”å¤§å°
+        {
+            using std::min;
+            auto father_size = getContentSize();
+            float scale_final = min(father_size.width / m_pHelloLayout->getContentSize().width, father_size.height / m_pHelloLayout->getContentSize().height);
+            m_pHelloLayout->setScale(scale_final);
+        }
+        
         m_pHelloLayout->addTouchEventListener([this](Ref* pSender, Widget::TouchEventType type){
             auto me = static_cast<Widget*>(pSender);
 
@@ -86,18 +95,18 @@ bool HelloScene::init()
     }
     addChild(m_pHelloLayout);
 
-    // ¿ªÊ¼°´Å¥
+    // å¼€å§‹æŒ‰é’®
     {
         Button* start_button = static_cast<Button*>(Helper::seekWidgetByName(m_pHelloLayout, "Button_StartGame"));
         start_button->addTouchEventListener([](Ref* pSender, Widget::TouchEventType type){
             if (type == Widget::TouchEventType::ENDED) {
-                // ¿ªÊ¼ÓÎÏ·£¬ÇĞ»»scene
+                // å¼€å§‹æ¸¸æˆï¼Œåˆ‡æ¢scene
                 Director::getInstance()->replaceScene(GameScene::scene());
             }
         });
     }
 
-    // Íæ¼Ò×´Ì¬ÇĞ»»°´Å¥
+    // ç©å®¶çŠ¶æ€åˆ‡æ¢æŒ‰é’®
     {
         auto player_status_btn = [](cocos2d::ui::Layout* m_pHelloLayout, fc::EnPlayerColor color) {
             char btn_name[32] = { 0 };
@@ -139,7 +148,7 @@ bool HelloScene::init()
         }
     }
 
-    // ·É»úÊıÁ¿Ñ¡Ôñ¿ò
+    // é£æœºæ•°é‡é€‰æ‹©æ¡†
     {
         auto num_scroll_view = dynamic_cast<ui::ScrollView*>(Helper::seekWidgetByName(m_pHelloLayout, "ListView_Plane_List"));
         num_scroll_view->setBounceEnabled(true);
@@ -150,14 +159,14 @@ bool HelloScene::init()
             switch (type) {
             case cocos2d::ui::ScrollView::EventType::SCROLLING: {
                 ui::ScrollView* me = static_cast<ui::ScrollView*>(sender);
-                auto my_sh = me->getCustomSize().height; // ¿ÉÊÓÇøÓò·¶Î§
-                auto c_sh = me->getInnerContainer()->getContentSize().height - my_sh; // ×î´óÓĞĞ§»î¶¯·¶Î§
-                auto c_mh = me->getInnerContainer()->getPositionY() - my_sh; // µ±Ç°Î»ÖÃÆ«ÒÆ
+                auto my_sh = me->getCustomSize().height; // å¯è§†åŒºåŸŸèŒƒå›´
+                auto c_sh = me->getInnerContainer()->getContentSize().height - my_sh; // æœ€å¤§æœ‰æ•ˆæ´»åŠ¨èŒƒå›´
+                auto c_mh = me->getInnerContainer()->getPositionY() - my_sh; // å½“å‰ä½ç½®åç§»
 
                 const int ele_num = me->getChildrenCount();
-                auto unit_h = c_sh / (ele_num - 1); // Ã¿¸öÑ¡ÏîUI×é¼şÕ¼ÓÃ³¤¶È
+                auto unit_h = c_sh / (ele_num - 1); // æ¯ä¸ªé€‰é¡¹UIç»„ä»¶å ç”¨é•¿åº¦
 
-                int now_select_index = (int) me->getUserData();
+                int now_select_index = (int)((intptr_t)me->getUserData());
                 int select_index = 0;
 
                 // Select NO. 1
@@ -168,7 +177,7 @@ bool HelloScene::init()
                 else // Select NO. N
                     select_index = ele_num;
 
-                // ´¥·¢¸ü»»Ñ¡È¡Öµ
+                // è§¦å‘æ›´æ¢é€‰å–å€¼
                 if (select_index != now_select_index) {
                     me->setUserData((void*) select_index);
                     log("change plane number from %d to %d.", now_select_index, select_index);
@@ -189,7 +198,7 @@ bool HelloScene::init()
         callback(num_scroll_view, cocos2d::ui::ScrollView::EventType::SCROLLING);
     }
 
-    // ÅÅĞĞ°æ
+    // æ’è¡Œç‰ˆ
     {
         fc::EnPlayerColor player_ranking[fc::EPC_MAX];
         fc::Player::SortByRanking(player_ranking);
