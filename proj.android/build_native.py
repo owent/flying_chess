@@ -129,6 +129,7 @@ def build(ndk_build_param,android_platform,build_mode):
 
     app_android_root = current_dir
     copy_resources(app_android_root)
+    # flying chess
     
     if android_platform is not None:
 				sdk_root = check_environment_variables_sdk()

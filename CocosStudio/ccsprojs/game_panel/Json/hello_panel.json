@@ -10,10 +10,11 @@
   "designHeight": 600,
   "designWidth": 600,
   "textures": [
-    "game_panel0.plist",
-    "game_panel1.plist"
+    "game_panel0.plist"
   ],
-  "texturesPng": [],
+  "texturesPng": [
+    "game_panel0.png"
+  ],
   "version": "1.6.0.0",
   "widgetTree": {
     "classname": "Panel",
@@ -1240,7 +1241,7 @@
               "clipAble": true,
               "colorType": 1,
               "direction": 1,
-              "editorClipAble": false,
+              "editorClipAble": true,
               "gravity": 0,
               "innerHeight": 0,
               "innerWidth": 0,

@@ -8,8 +8,24 @@
     ],
     "copy_resources": [
         {
-            "from": "../Resources",
-            "to": ""
+            "from": "../Resources/fonts",
+            "to": "fonts"
+        },
+        {
+            "from": "../Resources/Images",
+            "to": "Images"
+        },
+        {
+            "from": "../Resources/publish",
+            "to": "publish"
+        },
+        {
+            "from": "../Resources/XML",
+            "to": "XML"
+        },
+        {
+            "from": "../Resources/Sound/*.ogg",
+            "to": "Sound"
         }
     ]
 }

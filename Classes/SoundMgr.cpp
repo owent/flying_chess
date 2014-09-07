@@ -12,13 +12,13 @@ using namespace CocosDenshion;
 // android effect only support ogg  
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)  
 #define MAKE_EFFECT_FILE(x)        x ".ogg"
-#define MAKE_BKM_FILE(x)           x ".mp3"
+#define MAKE_BKM_FILE(x)           x ".ogg"
 #elif( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC)  
 #define MAKE_EFFECT_FILE(x)        x ".m4a"
 #define MAKE_BKM_FILE(x)           x ".m4a"
 #else  
 #define MAKE_EFFECT_FILE(x)        x ".wav"
-#define MAKE_BKM_FILE(x)           x ".wav"
+#define MAKE_BKM_FILE(x)           x ".mp3"
 #endif // CC_PLATFORM_ANDROID  
 
 namespace fc {

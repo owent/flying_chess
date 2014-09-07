@@ -31,5 +31,6 @@ proj.win32/*.suo
 proj.android/assets
 proj.android/bin
 proj.android/obj
+proj.android/.settings
 
 # build cache - ios

@@ -9,8 +9,30 @@
   "dataScale": 1,
   "designHeight": 600,
   "designWidth": 600,
-  "textures": [],
-  "texturesPng": [],
+  "textures": [
+    "game_panel0.plist",
+    "game_panel1.plist"
+  ],
+  "texturesPng": [
+    "game_panel0.png",
+    "game_panel1.png",
+    "game_panel0.png",
+    "game_panel1.png",
+    "game_panel0.png",
+    "game_panel1.png",
+    "game_panel0.png",
+    "game_panel1.png",
+    "game_panel0.png",
+    "game_panel1.png",
+    "game_panel0.png",
+    "game_panel1.png",
+    "game_panel0.png",
+    "game_panel1.png",
+    "game_panel0.png",
+    "game_panel1.png",
+    "game_panel0.png",
+    "game_panel1.png"
+  ],
   "version": "1.6.0.0",
   "widgetTree": {
     "classname": "Panel",

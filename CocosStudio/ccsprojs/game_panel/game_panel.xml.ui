@@ -28,7 +28,26 @@
     <string>game_panel0.plist</string>
     <string>game_panel1.plist</string>
   </imageFileList>
-  <imagePngList />
+  <imagePngList>
+    <string>game_panel0.png</string>
+    <string>game_panel1.png</string>
+    <string>game_panel0.png</string>
+    <string>game_panel1.png</string>
+    <string>game_panel0.png</string>
+    <string>game_panel1.png</string>
+    <string>game_panel0.png</string>
+    <string>game_panel1.png</string>
+    <string>game_panel0.png</string>
+    <string>game_panel1.png</string>
+    <string>game_panel0.png</string>
+    <string>game_panel1.png</string>
+    <string>game_panel0.png</string>
+    <string>game_panel1.png</string>
+    <string>game_panel0.png</string>
+    <string>game_panel1.png</string>
+    <string>game_panel0.png</string>
+    <string>game_panel1.png</string>
+  </imagePngList>
   <JsonSuffix>.json</JsonSuffix>
-  <CurrentUIJson>hello_panel.json</CurrentUIJson>
+  <CurrentUIJson>game_panel_bk.json</CurrentUIJson>
 </UIProject>
