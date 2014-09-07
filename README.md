@@ -28,5 +28,5 @@ flying chess written with cocos2d-x 3.X
 + Win32
 + Android Arm
 + Mac
-+ IOS(Iphone)
-+ IOS(Ipad)
++ IOS(Iphone)  [没有开发者账号暂未打包，可以直接xcode打开运行]
++ IOS(Ipad)    [没有开发者账号暂未打包，可以直接xcode打开运行]
