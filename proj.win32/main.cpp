@@ -4,7 +4,9 @@
 
 USING_NS_CC;
 
+#ifdef _DEBUG
 #define USE_WIN32_CONSOLE
+#endif
 
 int APIENTRY _tWinMain(HINSTANCE hInstance,
                        HINSTANCE hPrevInstance,
