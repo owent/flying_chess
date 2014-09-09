@@ -102,7 +102,7 @@ Point VisibleRect::rightBottom()
 * @note cx = scene_fix_coordinate(cx, fox + fs / 2, fs, cs)
 */
 float scene_fix_coordinate(float cur, float origin, float fsize, float msize) {
-    float range = (msize - fsize) / 2;
+    float range = (fsize - msize) / 2;
 
     if (range <= 0.0)
         return origin;
@@ -124,7 +124,7 @@ float scene_fix_coordinate(float cur, float origin, float fsize, float msize) {
 * @note using min(scene_fix_scale(s, fs_x, ms_x), scene_fix_scale(s, fs_y, ms_y))
 */
 float scene_fix_scale(float scale, float fsize, float msize) {
-    float min_scale = fsize / msize;
+    float min_scale = msize / fsize;
 
     if (scale < min_scale)
         scale = min_scale;

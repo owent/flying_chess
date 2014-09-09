@@ -74,13 +74,19 @@ bool HelloScene::init()
 
                 auto cur_pos = me->getPosition();
                 auto father_size = me->getParent()->getContentSize();
-                auto my_size = me->getContentSize();
+                auto my_size = me->getContentSize() * me->getScale();
                 auto fix_pos = Vec2(
                     scene_fix_coordinate(cur_pos.x, father_size.width / 2, father_size.width, my_size.width),
                     scene_fix_coordinate(cur_pos.y, father_size.height / 2, father_size.height, my_size.height)
                 );
 
                 if (std::numeric_limits<float>::epsilon() <= fabs(fix_pos.x - cur_pos.x) || std::numeric_limits<float>::epsilon() <= fabs(fix_pos.y - cur_pos.y)) {
+                    log("father size(%f, %f), my size(%f, %f), cur position(%f, %f), fix position(%f, %f)",
+                        father_size.width, father_size.height,
+                        my_size.width, my_size.height,
+                        cur_pos.x, cur_pos.y,
+                        fix_pos.x, fix_pos.y
+                    );
                     me->runAction(MoveTo::create(.5f, fix_pos));
                 }
 

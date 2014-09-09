@@ -92,7 +92,7 @@ bool GameScene::init()
 
                     auto cur_pos = me->getPosition();
                     auto father_size = me->getParent()->getContentSize();
-                    auto my_size = me->getContentSize();
+                    auto my_size = me->getContentSize() * me->getScale();
                     auto fix_pos = Vec2(
                         scene_fix_coordinate(cur_pos.x, father_size.width / 2, father_size.width, my_size.width),
                         scene_fix_coordinate(cur_pos.y, father_size.height / 2, father_size.height, my_size.height)

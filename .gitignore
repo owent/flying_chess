@@ -34,3 +34,18 @@ proj.android/obj
 proj.android/.settings
 
 # build cache - ios
+
+
+# build cache - windows phone
+proj.wp8-xaml/ipch
+proj.wp8-xaml/Debug
+proj.wp8-xaml/Release
+proj.wp8-xaml/ARM
+proj.wp8-xaml/App/Bin
+proj.wp8-xaml/App/obj
+proj.wp8-xaml/AppComponent/Debug
+proj.wp8-xaml/AppComponent/Release
+proj.wp8-xaml/AppComponent/ARM
+proj.wp8-xaml/*.sdf
+proj.wp8-xaml/*.opensdf
+proj.wp8-xaml/*.suo

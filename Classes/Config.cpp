@@ -1,6 +1,7 @@
 #include <assert.h>
 #include <cstdlib>
 #include <ctime>
+#include <cstdio>
 #include "cocos2d.h"
 
 #include "Config.h"
@@ -49,15 +50,15 @@ namespace fc {
         {
             auto cfg_text = xml_node->Attribute("Width");
             if (cfg_text)
-                GridCfg.Width = strtof(cfg_text, NULL);
+                GridCfg.Width = xml_node->FloatAttribute("Width");
 
             cfg_text = xml_node->Attribute("Height");
             if (cfg_text)
-                GridCfg.Height = strtof(cfg_text, NULL);
+                GridCfg.Height = xml_node->FloatAttribute("Height");
 
             cfg_text = xml_node->Attribute("Margin");
             if (cfg_text)
-                GridCfg.MarginLeft = GridCfg.MarginTop = strtof(cfg_text, NULL);
+                GridCfg.MarginLeft = GridCfg.MarginTop = xml_node->FloatAttribute("Margin");
         }
 
 
@@ -166,19 +167,19 @@ namespace fc {
 
         auto cfg_node = xml_node->FirstChildElement("MoveSpeed");
         if (cfg_node)
-            Plane.MoveSpeed = strtof(cfg_node->FirstChild()->ToText()->Value(), NULL);
+            Plane.MoveSpeed = (float)strtod(cfg_node->FirstChild()->ToText()->Value(), NULL);
 
         cfg_node = xml_node->FirstChildElement("JumpSpeed");
         if (cfg_node)
-            Plane.JumpSpeed = strtof(cfg_node->FirstChild()->ToText()->Value(), NULL);
+            Plane.JumpSpeed = (float) strtod(cfg_node->FirstChild()->ToText()->Value(), NULL);
 
         cfg_node = xml_node->FirstChildElement("FlySpeed");
         if (cfg_node)
-            Plane.FlySpeed = strtof(cfg_node->FirstChild()->ToText()->Value(), NULL);
+            Plane.FlySpeed = (float) strtod(cfg_node->FirstChild()->ToText()->Value(), NULL);
 
         cfg_node = xml_node->FirstChildElement("GoHomeSpeed");
         if (cfg_node)
-            Plane.GoHomeSpeed = strtof(cfg_node->FirstChild()->ToText()->Value(), NULL);
+            Plane.GoHomeSpeed = (float) strtod(cfg_node->FirstChild()->ToText()->Value(), NULL);
     }
 
     void Config::init_rolls(tinyxml2::XMLElement* xml_node) {

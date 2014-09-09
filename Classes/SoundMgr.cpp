@@ -16,6 +16,9 @@ using namespace CocosDenshion;
 #elif( CC_TARGET_PLATFORM == CC_PLATFORM_IOS || CC_TARGET_PLATFORM == CC_PLATFORM_MAC)  
 #define MAKE_EFFECT_FILE(x)        x ".m4a"
 #define MAKE_BKM_FILE(x)           x ".m4a"
+#elif (CC_TARGET_PLATFORM == CC_PLATFORM_WP8 || CC_TARGET_PLATFORM == CC_PLATFORM_WINRT) 
+    #define MAKE_EFFECT_FILE(x)        x ".wav"
+    #define MAKE_BKM_FILE(x)           x ".wav"
 #else  
 #define MAKE_EFFECT_FILE(x)        x ".wav"
 #define MAKE_BKM_FILE(x)           x ".mp3"
