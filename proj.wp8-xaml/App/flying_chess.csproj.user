@@ -10,11 +10,11 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <CurrentDeployCmdId>256</CurrentDeployCmdId>
-    <CurrentDeployID>D363CCA4-0764-4F2C-9EE1-12E55E13C0FC</CurrentDeployID>
+    <CurrentDeployID>30F105C9-681E-420b-A277-7C086EAD8A4E</CurrentDeployID>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
     <CurrentDeployCmdId>256</CurrentDeployCmdId>
-    <CurrentDeployID>D363CCA4-0764-4F2C-9EE1-12E55E13C0FC</CurrentDeployID>
+    <CurrentDeployID>30F105C9-681E-420b-A277-7C086EAD8A4E</CurrentDeployID>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
